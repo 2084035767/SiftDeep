@@ -1,135 +1,142 @@
-# Turborepo starter
+<img src="assets/preview.png" width="851" alt="hello">
 
-This Turborepo starter is maintained by the Turborepo core team.
+## NestJS & NextJS Boilerplate with Turborepo
 
-## Using this example
+This repository provides a scalable and efficient `monorepo` setup using Turborepo. It includes `NestJS` for backend
+services and `NextJS` for frontend applications, with a suite of tools and libraries configured for seamless development
+and deployment.
 
-Run the following command:
+### **Features**
 
-```sh
-npx create-turbo@latest
+- `NestJS (v11)` backend
+- `NextJS (v15)` frontend
+- `SWC` for fast TypeScript and JavaScript transpilation
+- `pnpm` for efficient dependency management
+- `JWT` Access Token & Refresh Token Authentication for secure API access
+- `PostgreSQL` database with TypeORM
+- `Nodemailer` for email services
+- `Linting` and `Formatting` pre-configured for code quality
+- `Micro-Frontend` Support with Turborepo
+- `Shadcn/UI` integration for styled components
+- `Tailwindcss(v4)` integration in `@repo/shadcn`
+
+### **Table of Contents**
+
+- Installation
+- Getting Started
+- Project Structure
+- Scripts
+- Contributing
+- License
+
+### **Installation**
+
+Clone the repository:
+
+```shell
+git clone https://github.com/devaungphyo/turbo-npn.git
 ```
 
-## What's inside?
+Navigate to the project directory:
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+```shell
+cd turbo-npn
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+Install dependencies using pnpm:
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+```shell
+pnpm install
 ```
 
-### Develop
+Getting Started
+To start the development server, run:
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+```shell
+pnpm dev
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+This will start both the NestJS backend and the Next.js frontend in development mode.
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+Project Structure
+The repository is organized into the following structure:
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+```yaml
+turborepo
+├── .husky               # Git hooks
+├── apps
+│   ├── api              # NestJS application
+│   └── web              # NextJS application
+├── assets               # Assets folder for media assets
+├── packages
+│   ├── shadcn           # shadcn/UI component library
+│   ├── ts-config        # Shared typescript configuration files
+│   ├── eslint-config    # Shared eslint configuration files
+│   ├── utils            # Shared utils functions
+└── turbo.json           # Turborepo configuration
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### Backend (NestJS)
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+The backend is powered by NestJS, with TypeORM configured to use PostgreSQL. JWT access token and refresh token
+authentication is implemented for secure API access. Nodemailer is used to handle email services.
 
+<img src="assets/lifecycle.png" alt="life cycle" width="100%">
+
+### Frontend (NextJS)
+
+The frontend is built with NextJS v15, styled with shadcn/UI components. It is optimized for server-side rendering and
+frontend authentication.
+Micro-Frontend with Turborepo
+Using Turborepo, the project supports a micro-frontend architecture, enabling shared libraries and configurations across
+apps.
+
+### To Add New UI Components to the UI Package
+
+```shell
+cd packages/shadcn
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+Then run the following command:
+
+```shell
+pnpm dlx shadcn@latest add
 ```
 
-## Useful Links
+This will add the latest version of shadcn to the UI package.
 
-Learn more about the power of Turborepo:
+`If you got an error in the UI package, change the import path`
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+```tsx
+// form
+import { cn } from '@repo/lib/utils';
+
+// to
+import { cn } from '@repo/shadcn/lib/utils';
+```
+
+### Scripts
+
+- `pnpm add:api` - Adds a package specifically to the api workspace.
+- `pnpm add:web` - Adds a package specifically to the web workspace.
+- `pnpm build` - Builds both the backend and frontend for production using TurboRepo.
+- `pnpm changeset` - Creates a new changeset for versioning updates.
+- `pnpm clear:modules` - Clears all node_modules in the project using npkill.
+- `pnpm commit` - Opens an interactive commit message interface using Commitizen (cz).
+- `pnpm dev` - Starts both the backend and frontend in development mode using TurboRepo.
+- `pnpm dev:api` - Starts the backend (api) in development mode.
+- `pnpm dev:web` - Starts the frontend (web) in development mode.
+- `pnpm format` - Formats the codebase according to the pre-configured Prettier rules.
+- `pnpm format:check` - Checks the codebase formatting against Prettier rules without modifying files.
+- `pnpm lint` - Lints all code in the repository using TurboRepo.
+- `pnpm prepare` - Runs Husky to set up Git hooks.
+- `pnpm prod` - Starts both the backend and frontend in production mode.
+- `pnpm test` - Runs all tests defined in the repository using TurboRepo.
+
+### Contributing
+
+Contributions are welcome! Please fork this repository, make your changes, and submit a pull request.
+
+### License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
