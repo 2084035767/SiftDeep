@@ -89,7 +89,7 @@ export const {
   /**
    * @description Required when behind a proxy (e.g., Vercel or Cloudflare)
    */
-  redirectProxyUrl: env.AUTH_URL,
+  redirectProxyUrl: env.API_URL,
 
   /**
    * @description Custom pages for authentication flow

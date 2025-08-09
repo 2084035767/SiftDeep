@@ -1,142 +1,87 @@
-<img src="assets/preview.png" width="851" alt="hello">
+# 🌟 深选 —— 让 B站的好内容，真正被看见
 
-## NestJS & NextJS Boilerplate with Turborepo
+> **人工策展 × 外链直达 × 数据透明**
+> 一个不存视频、不碰版权、只推荐好内容的 B站精选引擎。
+> Built with ❤️ by Next.js + Nest.js
 
-This repository provides a scalable and efficient `monorepo` setup using Turborepo. It includes `NestJS` for backend
-services and `NextJS` for frontend applications, with a suite of tools and libraries configured for seamless development
-and deployment.
+---
 
-### **Features**
+## 🎯 为什么需要「深选」？
 
-- `NestJS (v11)` backend
-- `NextJS (v15)` frontend
-- `SWC` for fast TypeScript and JavaScript transpilation
-- `pnpm` for efficient dependency management
-- `JWT` Access Token & Refresh Token Authentication for secure API access
-- `PostgreSQL` database with TypeORM
-- `Nodemailer` for email services
-- `Linting` and `Formatting` pre-configured for code quality
-- `Micro-Frontend` Support with Turborepo
-- `Shadcn/UI` integration for styled components
-- `Tailwindcss(v4)` integration in `@repo/shadcn`
+在算法推荐的洪流中，太多优质内容被埋没：
 
-### **Table of Contents**
+- 冷门神作无人问津
+- 论文级科普石沉大海
+- 中腰部 UP 主努力却无曝光
 
-- Installation
-- Getting Started
-- Project Structure
-- Scripts
-- Contributing
-- License
+**深选不做搬运，也不做聚合，我们只做一件事：**
 
-### **Installation**
+> 🔍 **发现并点亮那些值得被看见的内容**
 
-Clone the repository:
+---
 
-```shell
-git clone https://github.com/devaungphyo/turbo-npn.git
-```
+## ✨ 核心理念
 
-Navigate to the project directory:
+| 原则           | 实现方式                                       |
+| -------------- | ---------------------------------------------- |
+| **人工策展**   | 编辑精选 + UP 主共建，拒绝标题党与低质内容     |
+| **零版权风险** | 所有内容外链至 B站原页，不存储任何视频文件     |
+| **数据透明**   | 仅调用官方 API，日志 30 天自动销毁，不追踪用户 |
+| **粉丝参与**   | 支持用户投稿、协同收藏夹、负反馈下架机制       |
 
-```shell
-cd turbo-npn
-```
+---
 
-Install dependencies using pnpm:
+## 🧩 核心功能
 
-```shell
-pnpm install
-```
+- 📚 **精选库**：主题分类 + 3秒GIF预览 + 多维度筛选
+- 📮 **每日速递**：每天 08:00 & 20:00 推送 3 条高质量推荐
+- 📑 **深度专题**：视频 + 资料 + 参考文献，构建知识网络
+- 💡 **收藏夹 2.0**：UP 主可创建，粉丝协同编辑
+- 🗳️ **用户投稿**：提交 BV 号，48 小时内人工审核
+- 🚫 **负反馈机制**：标记“质量不符”，24 小时内人工复审
 
-Getting Started
-To start the development server, run:
+---
 
-```shell
-pnpm dev
-```
+## ⚙️ 技术栈
 
-This will start both the NestJS backend and the Next.js frontend in development mode.
+| 前端               | 后端                | 基础设施     |
+| ------------------ | ------------------- | ------------ |
+| Next.js（SSR/ISR） | Nest.js（REST API） | Redis 缓存   |
+| Tailwind CSS       | OAuth2.0 授权       | Vercel 部署  |
+| TypeScript         | B站开放平台 API     | 日志自动销毁 |
 
-Project Structure
-The repository is organized into the following structure:
+🔒 **完全合规**：仅使用官方 API，QPS ≤ 2，IP 池 + 退避机制防风控
 
-```yaml
-turborepo
-├── .husky               # Git hooks
-├── apps
-│   ├── api              # NestJS application
-│   └── web              # NextJS application
-├── assets               # Assets folder for media assets
-├── packages
-│   ├── shadcn           # shadcn/UI component library
-│   ├── ts-config        # Shared typescript configuration files
-│   ├── eslint-config    # Shared eslint configuration files
-│   ├── utils            # Shared utils functions
-└── turbo.json           # Turborepo configuration
-```
+---
 
-### Backend (NestJS)
+## 📢 版权声明
 
-The backend is powered by NestJS, with TypeORM configured to use PostgreSQL. JWT access token and refresh token
-authentication is implemented for secure API access. Nodemailer is used to handle email services.
+> 📄 「深选」仅为内容索引平台，所有视频著作权归 UP 主及 [bilibili.com](https://www.bilibili.com) 所有。
+> ⚠️ 所有外链均添加 `rel="noopener noreferrer"`，首次点击将弹出跳转提示。
+> 🚨 支持一键跳转至 B站视频页并带上 `#风纪举报` 标签。
 
-<img src="assets/lifecycle.png" alt="life cycle" width="100%">
+---
 
-### Frontend (NextJS)
+## 🚀 未来展望
 
-The frontend is built with NextJS v15, styled with shadcn/UI components. It is optimized for server-side rendering and
-frontend authentication.
-Micro-Frontend with Turborepo
-Using Turborepo, the project supports a micro-frontend architecture, enabling shared libraries and configurations across
-apps.
+- [ ] 开放 API，支持第三方接入
+- [ ] 个性化推荐（基于收藏行为）
+- [ ] 移动端 PWA 支持
+- [ ] 多平台扩展（小红书 / YouTube 精选实验版）
 
-### To Add New UI Components to the UI Package
+---
 
-```shell
-cd packages/shadcn
-```
+## 💬 加入我们
 
-Then run the following command:
+如果你也相信：
 
-```shell
-pnpm dlx shadcn@latest add
-```
+> “好内容不该被算法淹没”
 
-This will add the latest version of shadcn to the UI package.
+欢迎：
 
-`If you got an error in the UI package, change the import path`
+- 🌟 Star 项目，支持我们持续迭代
+- 🐛 提交 Issue，反馈体验问题
+- ✍️ 成为内容编辑，参与策展
+- 🤝 联系合作：[your-email@example.com](mailto:your-email@example.com)
 
-```tsx
-// form
-import { cn } from '@repo/lib/utils';
-
-// to
-import { cn } from '@repo/shadcn/lib/utils';
-```
-
-### Scripts
-
-- `pnpm add:api` - Adds a package specifically to the api workspace.
-- `pnpm add:web` - Adds a package specifically to the web workspace.
-- `pnpm build` - Builds both the backend and frontend for production using TurboRepo.
-- `pnpm changeset` - Creates a new changeset for versioning updates.
-- `pnpm clear:modules` - Clears all node_modules in the project using npkill.
-- `pnpm commit` - Opens an interactive commit message interface using Commitizen (cz).
-- `pnpm dev` - Starts both the backend and frontend in development mode using TurboRepo.
-- `pnpm dev:api` - Starts the backend (api) in development mode.
-- `pnpm dev:web` - Starts the frontend (web) in development mode.
-- `pnpm format` - Formats the codebase according to the pre-configured Prettier rules.
-- `pnpm format:check` - Checks the codebase formatting against Prettier rules without modifying files.
-- `pnpm lint` - Lints all code in the repository using TurboRepo.
-- `pnpm prepare` - Runs Husky to set up Git hooks.
-- `pnpm prod` - Starts both the backend and frontend in production mode.
-- `pnpm test` - Runs all tests defined in the repository using TurboRepo.
-
-### Contributing
-
-Contributions are welcome! Please fork this repository, make your changes, and submit a pull request.
-
-### License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+> © 2025 深选 · 不存储 · 不搬运 · 只推荐

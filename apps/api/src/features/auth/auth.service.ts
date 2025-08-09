@@ -152,23 +152,28 @@ export class AuthService {
     try {
       const result = await this.transactionService.runInTransaction(
         async (manager) => {
-          const user = manager.create(User, createUserDto);
-          await manager.insert(User, user);
+          try {
+            const user = manager.create(User, createUserDto);
+            await manager.insert(User, user);
 
-          const profile = manager.create(Profile, {
-            user_id: user.id,
-            name: extractName(createUserDto.email),
-          });
-          await manager.insert(Profile, profile);
+            const profile = manager.create(Profile, {
+              user_id: user.id,
+              name: extractName(createUserDto.email),
+            });
+            await manager.insert(Profile, profile);
 
-          const otp = manager.create(Otp, {
-            otp: email_confirmation_otp,
-            type: 'EMAIL_CONFIRMATION',
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-          });
-          await manager.insert(Otp, otp);
+            const otp = manager.create(Otp, {
+              otp: email_confirmation_otp,
+              type: 'EMAIL_CONFIRMATION',
+              expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+            });
+            await manager.insert(Otp, otp);
 
-          return { user, profile, otp };
+            return { user, profile, otp };
+          } catch (transactionError) {
+            this.logger.error('Transaction error:', transactionError);
+            throw transactionError;
+          }
         },
       );
 
@@ -181,8 +186,13 @@ export class AuthService {
         }),
       });
       return { data: result.user };
-    } catch (e) {
-      this.logger.error(e);
+    } catch (e: unknown) {
+      this.logger.error('Registration error:', e);
+      this.logger.error('Error details:', {
+        message: (e as Error).message,
+        stack: (e as Error).stack,
+        name: (e as Error).name,
+      });
       throw new BadRequestException('Something went wrong!');
     }
   }
