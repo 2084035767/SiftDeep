@@ -1,4 +1,5 @@
-import { auth } from '@/auth';
+import { authOptions } from '@/auth';
+import { getServerSession } from 'next-auth';
 import SessionAllLogout from '@/components/auth/session-all-logout';
 import SessionOtherLogout from '@/components/auth/session-other-logout';
 import { getAuthSessions } from '@/server/auth.server';
@@ -15,7 +16,7 @@ import { formatDate } from '@repo/utils';
 
 const SessionsSettings = async () => {
   const sessions = await getAuthSessions();
-  const authSession = await auth();
+  const authSession = await getServerSession(authOptions);
   return (
     <div className="space-y-6">
       <Card>
@@ -40,17 +41,17 @@ const SessionsSettings = async () => {
               .map((session) => (
                 <div
                   key={session.id}
-                  className="flex items-start justify-between p-4 border rounded-lg"
+                  className="flex items-start justify-between rounded-lg border p-4"
                 >
                   <div className="flex gap-3">
                     {session.device_type === 'desktop' && (
-                      <Laptop className="size-7 text-muted-foreground" />
+                      <Laptop className="text-muted-foreground size-7" />
                     )}{' '}
                     {session.device_type === 'mobile' && (
-                      <Smartphone className="size-7 text-muted-foreground" />
+                      <Smartphone className="text-muted-foreground size-7" />
                     )}
                     {session.device_type === 'unknown' && (
-                      <TriangleAlert className="size-7 text-muted-foreground" />
+                      <TriangleAlert className="text-muted-foreground size-7" />
                     )}
                     <div>
                       <div className="flex items-center gap-2">
@@ -62,10 +63,10 @@ const SessionsSettings = async () => {
                           <Badge variant="secondary">Current Session</Badge>
                         )}
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {session.location} • IP: {session.ip}
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {formatDate(
                           session.updatedAt,
                           'MM-DD-YYYY / hh:mm:ss:A',

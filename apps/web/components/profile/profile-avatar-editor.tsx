@@ -67,7 +67,7 @@ const ProfileAvatarEditor = () => {
           {...getRootProps()}
           size="icon"
           variant="secondary"
-          className="absolute bottom-0 right-0 h-8 w-8 rounded-full"
+          className="absolute right-0 bottom-0 h-8 w-8 rounded-full"
         >
           <input {...getInputProps()} />
           <Camera className="size-4" />

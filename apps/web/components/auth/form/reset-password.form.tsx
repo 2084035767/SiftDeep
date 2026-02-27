@@ -47,11 +47,11 @@ const ResetPasswordForm = ({ session }: { session: Session | null }) => {
     result: { validationErrors, serverError },
   } = useAction(resetPassword);
   return (
-    <div className={cn('w-full flex flex-col gap-6')}>
-      <Card className="max-w-xl w-full mx-auto">
-        <CardHeader className="text-center mb-7">
+    <div className={cn('flex w-full flex-col gap-6')}>
+      <Card className="mx-auto w-full max-w-xl">
+        <CardHeader className="mb-7 text-center">
           <LogoIcon className="mb-3" />
-          <CardTitle className="text-xl text-start">Reset Password</CardTitle>
+          <CardTitle className="text-start text-xl">Reset Password</CardTitle>
           <CardDescription
             className={cn('text-start', serverError && 'text-red-500')}
           >
@@ -129,29 +129,29 @@ const ResetPasswordForm = ({ session }: { session: Session | null }) => {
                       minLength={6}
                       pattern={REGEXP_ONLY_DIGITS}
                     >
-                      <InputOTPGroup className="w-full grid grid-cols-6 gap-5">
+                      <InputOTPGroup className="grid w-full grid-cols-6 gap-5">
                         <InputOTPSlot
-                          className="w-full h-10 rounded-md first:rounded-md last:rounded-md border"
+                          className="h-10 w-full rounded-md border first:rounded-md last:rounded-md"
                           index={0}
                         />
                         <InputOTPSlot
-                          className="w-full h-10 rounded-md first:rounded-md last:rounded-md border"
+                          className="h-10 w-full rounded-md border first:rounded-md last:rounded-md"
                           index={1}
                         />
                         <InputOTPSlot
-                          className="w-full h-10 rounded-md first:rounded-md last:rounded-md border"
+                          className="h-10 w-full rounded-md border first:rounded-md last:rounded-md"
                           index={2}
                         />
                         <InputOTPSlot
-                          className="w-full h-10 rounded-md first:rounded-md last:rounded-md border"
+                          className="h-10 w-full rounded-md border first:rounded-md last:rounded-md"
                           index={3}
                         />
                         <InputOTPSlot
-                          className="w-full h-10 rounded-md first:rounded-md last:rounded-md border"
+                          className="h-10 w-full rounded-md border first:rounded-md last:rounded-md"
                           index={4}
                         />
                         <InputOTPSlot
-                          className="w-full h-10 rounded-md first:rounded-md last:rounded-md border"
+                          className="h-10 w-full rounded-md border first:rounded-md last:rounded-md"
                           index={5}
                         />
                       </InputOTPGroup>

@@ -34,11 +34,11 @@ const SignInForm = () => {
     result: { validationErrors, serverError },
   } = useAction(signInWithCredentials);
   return (
-    <div className={cn('w-full flex flex-col gap-6')}>
-      <Card className="max-w-xl w-full mx-auto">
-        <CardHeader className="text-center mb-7">
+    <div className={cn('flex w-full flex-col gap-6')}>
+      <Card className="mx-auto w-full max-w-xl">
+        <CardHeader className="mb-7 text-center">
           <LogoIcon className="mb-3" />
-          <CardTitle className="text-xl text-start">SignIn</CardTitle>
+          <CardTitle className="text-start text-xl">SignIn</CardTitle>
           <CardDescription
             className={cn('text-start', serverError && 'text-red-500')}
           >

@@ -1,6 +1,5 @@
 import { triggerType } from '@/lib/auth';
 import { Session, User } from 'next-auth';
-import { AdapterUser } from 'next-auth/adapters';
 import { JWT } from 'next-auth/jwt';
 
 /**
@@ -22,7 +21,7 @@ export const jwtCallback = ({
   session,
 }: {
   token: JWT;
-  user: User | AdapterUser;
+  user: User;
   trigger: triggerType;
   session: Session;
 }): JWT => {

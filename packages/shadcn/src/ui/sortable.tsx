@@ -458,7 +458,7 @@ const SortableItem = React.forwardRef<HTMLDivElement, SortableItemProps>(
           ref={composedRef}
           style={composedStyle}
           className={cn(
-            'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1',
+            'focus-visible:ring-ring focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden',
             {
               'touch-none select-none': asHandle,
               'cursor-default': context.flatCursor,
@@ -476,8 +476,7 @@ const SortableItem = React.forwardRef<HTMLDivElement, SortableItemProps>(
 );
 SortableItem.displayName = ITEM_NAME;
 
-interface SortableItemHandleProps
-  extends React.ComponentPropsWithoutRef<'button'> {
+interface SortableItemHandleProps extends React.ComponentPropsWithoutRef<'button'> {
   asChild?: boolean;
 }
 
@@ -536,8 +535,10 @@ const dropAnimation: DropAnimation = {
   }),
 };
 
-interface SortableOverlayProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof DragOverlay>, 'children'> {
+interface SortableOverlayProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof DragOverlay>,
+  'children'
+> {
   container?: Element | DocumentFragment | null;
   children?:
     | ((params: { value: UniqueIdentifier }) => React.ReactNode)

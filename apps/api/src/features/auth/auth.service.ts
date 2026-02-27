@@ -177,14 +177,20 @@ export class AuthService {
         },
       );
 
-      await this.mailService.sendEmail({
-        to: [result.user.email],
-        subject: 'Confirm your email',
-        html: RegisterSuccessMail({
-          name: result.profile.name,
-          otp: email_confirmation_otp,
-        }),
-      });
+      // Send confirmation email (non-blocking, won't fail registration)
+      this.mailService
+        .sendEmail({
+          to: [result.user.email],
+          subject: 'Confirm your email',
+          html: RegisterSuccessMail({
+            name: result.profile.name,
+            otp: email_confirmation_otp,
+          }),
+        })
+        .catch((mailError) => {
+          this.logger.warn('Failed to send confirmation email:', mailError);
+        });
+
       return { data: result.user };
     } catch (e: unknown) {
       this.logger.error('Registration error:', e);
@@ -217,17 +223,24 @@ export class AuthService {
       userAgent: dto.userAgent,
     });
     const session = await this.SessionRepository.save(sessionData);
-    await this.mailService.sendEmail({
-      to: [user.email],
-      subject: 'SignIn with your email',
-      html: SignInSuccessMail({
-        username: user.profile.name,
-        loginTime: sessionData.createdAt,
-        ipAddress: session.ip,
-        location: session.location,
-        device: session.device_name,
-      }),
-    });
+
+    // Send login notification email (non-blocking, won't fail login)
+    this.mailService
+      .sendEmail({
+        to: [user.email],
+        subject: 'SignIn with your email',
+        html: SignInSuccessMail({
+          username: user.profile.name,
+          loginTime: sessionData.createdAt,
+          ipAddress: session.ip,
+          location: session.location,
+          device: session.device_name,
+        }),
+      })
+      .catch((mailError) => {
+        this.logger.warn('Failed to send login notification email:', mailError);
+      });
+
     const session_refresh_time = await generateRefreshTime();
     return {
       data: user,

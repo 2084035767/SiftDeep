@@ -24,7 +24,7 @@ const SignOut = () => {
       <AlertDialogTrigger asChild>
         <Button
           type="button"
-          className="w-full justify-start text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-destructive dark:hover:text-white"
+          className="dark:hover:bg-destructive w-full justify-start text-red-500 hover:bg-red-50 hover:text-red-600 dark:hover:text-white"
           variant="ghost"
         >
           <LogOut className="mr-2 size-4" />
@@ -56,7 +56,7 @@ const SignOut = () => {
             }}
           >
             {isExecuting && (
-              <Loader2 className="mr-2 size-4 lg:size-5animate-spin" />
+              <Loader2 className="lg:size-5animate-spin mr-2 size-4" />
             )}
             Sign Out
           </Button>

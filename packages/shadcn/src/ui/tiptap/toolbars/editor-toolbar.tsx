@@ -16,24 +16,24 @@ import { Editor } from '@tiptap/core';
 
 export const EditorToolbar = ({ editor }: { editor: Editor }) => {
   return (
-    <div className="sticky top-0 z-20 w-full border-b bg-accent select-none px-2 rounded-md">
+    <div className="bg-accent sticky top-0 z-20 w-full rounded-md border-b px-2 select-none">
       <ToolbarProvider editor={editor}>
         <TooltipProvider>
           <div>
-            <div className="flex items-center gap-1 md:px-2 flex-wrap">
-              <div className="w-full md:w-auto flex gap-1 justify-between md:justify-start">
+            <div className="flex flex-wrap items-center gap-1 md:px-2">
+              <div className="flex w-full justify-between gap-1 md:w-auto md:justify-start">
                 <TextToolbar />
-                <div className="gap-1 md:flex items-center">
+                <div className="items-center gap-1 md:flex">
                   <UndoToolbar />
                   <RedoToolbar />
                 </div>
-                <div className="flex gap-1 items-center">
+                <div className="flex items-center gap-1">
                   <LinkToolbar />
                   <AlignmentToolbar />
                   <HorizontalRuleToolbar />
                 </div>
               </div>
-              <div className="w-full md:w-fit flex-1 flex items-center justify-between">
+              <div className="flex w-full flex-1 items-center justify-between md:w-fit">
                 <div className="flex items-center gap-1">
                   <ColorHighlightToolbar />
                   <UtilToolbar />

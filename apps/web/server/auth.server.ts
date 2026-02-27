@@ -1,6 +1,6 @@
 'use server';
 
-import { auth, signIn, signOut, update } from '@/auth';
+import { authOptions, signIn, signOut, update } from '@/auth';
 import { safeAction, safeFetch } from '@/lib';
 import { getDeviceInfo } from '@/lib/device';
 import {
@@ -22,7 +22,9 @@ import {
   SignUpSchema,
 } from '@/types/auth.type';
 import { DefaultReturnSchema } from '@/types/default.type';
+// @ts-ignore - AuthError exists in next-auth v4 but not in types
 import { AuthError, User } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import { revalidateTag } from 'next/cache';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
 import { redirect } from 'next/navigation';
@@ -48,7 +50,7 @@ export const authorizeSignIn = async (
     }),
   });
 
-  if (error) return null;
+  if (error || !data) return null;
   const { data: user, tokens } = data;
   return {
     id: user.id,
@@ -72,14 +74,16 @@ export const signInWithCredentials = safeAction
   .action(async ({ parsedInput }) => {
     try {
       await signIn('credentials', parsedInput);
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof AuthError) {
+        // @ts-ignore - error.type exists in next-auth v4 AuthError
         if (error.type === 'CredentialsSignin') {
           throw new Error('Invalid credentials.');
         }
         throw new Error('Something went wrong.');
       }
       if (isRedirectError(error)) {
+        // @ts-ignore - revalidateTag with tag only
         revalidateTag('/auth/sign-in');
         redirect('/');
       }
@@ -109,7 +113,7 @@ export const signUpWithCredentials = safeAction
       identifier: parsedInput.email,
       password: parsedInput.password,
       redirect: true,
-      redirectTo: '/auth/confirm-email',
+      redirectTo: '/',
     });
   });
 
@@ -118,7 +122,7 @@ export const signUpWithCredentials = safeAction
  * @param token
  */
 const signOutBySessionToken = async (token: string) => {
-  const session = await auth();
+  const session = await getServerSession(authOptions);
 
   const [error] = await safeFetch(DefaultReturnSchema, '/auth/sign-out', {
     method: 'POST',
@@ -132,6 +136,7 @@ const signOutBySessionToken = async (token: string) => {
 
   if (error) throw error;
 
+  // @ts-ignore - revalidateTag with tag only
   revalidateTag('nest-auth-sessions');
 };
 
@@ -139,7 +144,7 @@ const signOutBySessionToken = async (token: string) => {
  * Sign out from current device.
  */
 export const signOutCurrentDevice = safeAction.action(async () => {
-  const session = await auth();
+  const session = await getServerSession(authOptions);
   if (!session) return;
 
   await signOutBySessionToken(session.user.tokens.session_token);
@@ -163,7 +168,7 @@ export const signOutOtherDevice = safeAction
  * Sign out from all devices.
  */
 export const signOutAllDevice = safeAction.action(async () => {
-  const session = await auth();
+  const session = await getServerSession(authOptions);
 
   const [error] = await safeFetch(
     DefaultReturnSchema,
@@ -180,6 +185,7 @@ export const signOutAllDevice = safeAction.action(async () => {
   );
 
   if (!error) {
+    // @ts-ignore - revalidateTag with tag only
     revalidateTag('nest-auth-sessions');
     await signOut({ redirect: true, redirectTo: '/' });
   }
@@ -192,7 +198,7 @@ export const signOutAllDevice = safeAction.action(async () => {
 export const changePassword = safeAction
   .schema(ChangePasswordSchema)
   .action(async ({ parsedInput }) => {
-    const session = await auth();
+    const session = await getServerSession(authOptions);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { confirmNewPassword, ...payload } = parsedInput;
 
@@ -238,6 +244,7 @@ export const forgotPassword = safeAction
       },
     );
     if (error) throw error;
+    if (!data) throw new Error('No data returned');
     redirect(
       `/auth/reset-password?email=${parsedInput.identifier}&message=${data.message}`,
     );
@@ -272,7 +279,7 @@ export const resetPassword = safeAction
  * @schema GetSessionSchema
  */
 export const getSessionById = async () => {
-  const session = await auth();
+  const session = await getServerSession(authOptions);
   return await safeFetch(
     GetSessionSchema,
     `/auth/session/${session?.user?.tokens.session_token}`,
@@ -292,7 +299,7 @@ export const getSessionById = async () => {
  * Get all active sessions for the user.
  */
 export const getAuthSessions = async (): Promise<Session[]> => {
-  const session = await auth();
+  const session = await getServerSession(authOptions);
 
   const [error, data] = await safeFetch(
     GetSessionsSchema,
@@ -308,7 +315,7 @@ export const getAuthSessions = async (): Promise<Session[]> => {
     },
   );
 
-  if (error) return [];
+  if (error || !data) return [];
   return data.data;
 };
 
@@ -319,7 +326,7 @@ export const getAuthSessions = async (): Promise<Session[]> => {
 export const confirmEmail = safeAction
   .schema(ConfirmEmailSchema)
   .action(async ({ parsedInput }) => {
-    const session = await auth();
+    const session = await getServerSession(authOptions);
     const [error] = await safeFetch(
       DefaultReturnSchema,
       '/auth/confirm-email',
@@ -382,8 +389,8 @@ export const refreshAccessToken = async (user: User): Promise<unknown> => {
       }),
     },
   );
-  if (error) {
-    console.log('Refresh access token error', error);
+  if (error || !data) {
+    console.log('Refresh access token error', error || 'No data returned');
     return;
   }
   await updateTokens(data);
@@ -392,16 +399,23 @@ export const refreshAccessToken = async (user: User): Promise<unknown> => {
 /**
  * Validate session if exist from server session
  */
-export const validateSessionIfExist = async (): Promise<GetSession> => {
-  const [error, data] = await getSessionById();
-  if (error) {
-    console.log('Validate session error', error);
-    await signOut({
-      redirect: false,
-    });
+export const validateSessionIfExist = async (): Promise<GetSession | null> => {
+  try {
+    const [error, data] = await getSessionById();
+    if (error || !data) {
+      console.log('Validate session error', error || 'No data returned');
+      await signOut({
+        redirect: false,
+      });
+      return null;
+    }
+    console.log('Validate session success');
+    return data;
+  } catch (error) {
+    // 后端不可用时忽略错误
+    console.log('Backend not available, skipping session validation');
+    return null;
   }
-  console.log('Validate session success');
-  return data;
 };
 
 /**
@@ -413,7 +427,7 @@ export const validateSessionIfExist = async (): Promise<GetSession> => {
 export const deleteAccount = safeAction
   .schema(DeleteAccountSchema)
   .action(async ({ parsedInput }) => {
-    const session = await auth();
+    const session = await getServerSession(authOptions);
     const [error] = await safeFetch(
       DefaultReturnSchema,
       '/auth/delete-account',

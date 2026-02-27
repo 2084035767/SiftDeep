@@ -29,7 +29,7 @@ interface FontFamilyItemProps {
 const FontFamilyItem = ({ font, isActive, onClick }: FontFamilyItemProps) => (
   <button
     onClick={onClick}
-    className="flex w-full items-center justify-between rounded-sm px-2 py-1 text-sm font-medium hover:bg-gray-3"
+    className="hover:bg-gray-3 flex w-full items-center justify-between rounded-sm px-2 py-1 text-sm font-medium"
     type="button"
   >
     <span style={{ fontFamily: font }}>{font}</span>
@@ -54,7 +54,7 @@ export const FontFamilyToolbar = () => {
         <Button
           variant="ghost"
           size="sm"
-          className={cn('h-8 w-32 p-0 font-normal text-left')}
+          className={cn('h-8 w-32 p-0 text-left font-normal')}
         >
           <span className="truncate" style={{ fontFamily: currentFont }}>
             {currentFont || 'Font'}
@@ -62,7 +62,7 @@ export const FontFamilyToolbar = () => {
           <ChevronDownIcon className="ml-2 size-4" />
         </Button>
 
-        <PopoverContent align="start" className="w-56 p-1 dark:bg-gray-2">
+        <PopoverContent align="start" className="dark:bg-gray-2 w-56 p-1">
           <ScrollArea className="max-h-80 overflow-y-auto pr-2">
             {FONT_FAMILIES.map((font) => (
               <FontFamilyItem

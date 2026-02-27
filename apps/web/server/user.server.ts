@@ -12,11 +12,11 @@ import {
  * Get all users
  * @returns GetAllUsers
  */
-export const getAllUsers = async (): Promise<GetAllUsers> => {
+export const getAllUsers = async (): Promise<GetAllUsers | null> => {
   const [isError, data] = await safeFetch(GetAllUsersSchema, '/users', {
     cache: 'no-store',
   });
-  if (isError)
+  if (isError || !data)
     return {
       data: [],
     };
@@ -32,7 +32,7 @@ export const getUser = async (identifier: string): Promise<User | null> => {
   const [error, data] = await safeFetch(GetUserSchema, `/users/${identifier}`, {
     cache: 'no-store',
   });
-  if (error) {
+  if (error || !data) {
     console.log('Get user error', error);
     return null;
   }

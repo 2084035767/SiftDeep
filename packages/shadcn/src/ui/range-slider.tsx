@@ -4,8 +4,9 @@ import * as SliderPrimitive from '@radix-ui/react-slider';
 import { cn } from '@repo/shadcn/lib/utils';
 import * as React from 'react';
 
-interface DualRangeSliderProps
-  extends React.ComponentProps<typeof SliderPrimitive.Root> {
+interface DualRangeSliderProps extends React.ComponentProps<
+  typeof SliderPrimitive.Root
+> {
   labelPosition?: 'top' | 'bottom';
   label: (value: number | undefined) => React.ReactNode;
 }
@@ -22,26 +23,26 @@ const DualRangeSlider = React.forwardRef<
     <SliderPrimitive.Root
       ref={ref}
       className={cn(
-        'relative flex w-full touch-none select-none items-center cursor-pointer',
+        'relative flex w-full cursor-pointer touch-none items-center select-none',
         className,
       )}
       {...props}
     >
-      <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden dark:bg-gray-800 bg-gray-300">
-        <SliderPrimitive.Range className="absolute h-full bg-primary" />
+      <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden bg-gray-300 dark:bg-gray-800">
+        <SliderPrimitive.Range className="bg-primary absolute h-full" />
       </SliderPrimitive.Track>
       <>
         {initialValue.map((value, index) => (
           <React.Fragment key={index}>
-            <SliderPrimitive.Thumb className="relative transition-all duration-500  size-2 border-2 border-primary bg-background block disabled:pointer-events-none disabled:opacity-50">
+            <SliderPrimitive.Thumb className="border-primary bg-background relative block size-2 border-2 transition-all duration-500 disabled:pointer-events-none disabled:opacity-50">
               <div
                 className={cn(
-                  'absolute flex w-full justify-center items-start gap-0.5 bg-transparent',
+                  'absolute flex w-full items-start justify-center gap-0.5 bg-transparent',
                   labelPosition === 'top' && '-top-5',
                   labelPosition === 'bottom' && 'top-4',
                 )}
               >
-                <span className="inline-block  -translate-y-1 bg-primary text-[8px] px-1 py-px">
+                <span className="bg-primary inline-block -translate-y-1 px-1 py-px text-[8px]">
                   {label(value)}
                 </span>
               </div>

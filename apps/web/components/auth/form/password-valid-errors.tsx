@@ -3,7 +3,7 @@ import { cn } from '@repo/shadcn/lib/utils';
 
 const PasswordValidErrors = ({ password }: { password: string }) => {
   return (
-    <div className="text-sm space-y-2">
+    <div className="space-y-2 text-sm">
       <p className="font-medium">Password requirements:</p>
       <ul className="mt-2 space-y-1 text-sm">
         <li
@@ -11,7 +11,7 @@ const PasswordValidErrors = ({ password }: { password: string }) => {
             'text-sm',
             password.length >= 8
               ? 'text-green-500'
-              : 'line-through text-red-500',
+              : 'text-red-500 line-through',
           )}
         >
           • At least 8 characters
@@ -21,7 +21,7 @@ const PasswordValidErrors = ({ password }: { password: string }) => {
             'text-sm',
             /[A-Z]/.test(password)
               ? 'text-green-500'
-              : 'line-through text-red-500',
+              : 'text-red-500 line-through',
           )}
         >
           • At least one uppercase letter
@@ -31,7 +31,7 @@ const PasswordValidErrors = ({ password }: { password: string }) => {
             'text-sm',
             /\d/.test(password)
               ? 'text-green-500'
-              : 'line-through text-red-500',
+              : 'text-red-500 line-through',
           )}
         >
           • At least one number
@@ -41,7 +41,7 @@ const PasswordValidErrors = ({ password }: { password: string }) => {
             'text-sm',
             /[!@#$%^&*(),.?":{}|<>]/.test(password)
               ? 'text-green-500'
-              : 'line-through text-red-500',
+              : 'text-red-500 line-through',
           )}
         >
           • At least one special character

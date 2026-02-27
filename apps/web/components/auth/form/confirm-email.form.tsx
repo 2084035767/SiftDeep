@@ -35,11 +35,11 @@ const ConfirmEmailForm = () => {
     result: { validationErrors, serverError },
   } = useAction(confirmEmail);
   return (
-    <div className={cn('w-full flex flex-col gap-6')}>
-      <Card className="max-w-xl w-full mx-auto">
-        <CardHeader className="text-center mb-7">
+    <div className={cn('flex w-full flex-col gap-6')}>
+      <Card className="mx-auto w-full max-w-xl">
+        <CardHeader className="mb-7 text-center">
           <LogoIcon className="mb-3" />
-          <CardTitle className="text-xl text-start">Confirm Email</CardTitle>
+          <CardTitle className="text-start text-xl">Confirm Email</CardTitle>
           <CardDescription
             className={cn('text-start', serverError && 'text-red-500')}
           >
@@ -55,7 +55,7 @@ const ConfirmEmailForm = () => {
               }}
             >
               <div className="grid gap-6">
-                <div className="grid gap-2 place-items-center">
+                <div className="grid place-items-center gap-2">
                   <InputOTP
                     disabled={isExecuting}
                     className="w-full"
@@ -70,29 +70,29 @@ const ConfirmEmailForm = () => {
                     minLength={6}
                     pattern={REGEXP_ONLY_DIGITS}
                   >
-                    <InputOTPGroup className="w-full grid grid-cols-6 gap-5">
+                    <InputOTPGroup className="grid w-full grid-cols-6 gap-5">
                       <InputOTPSlot
-                        className="w-full h-10  rounded-xl first:rounded-xl last:rounded-xl border"
+                        className="h-10 w-full rounded-xl border first:rounded-xl last:rounded-xl"
                         index={0}
                       />
                       <InputOTPSlot
-                        className="w-full h-10  rounded-xl first:rounded-xl last:rounded-xl border"
+                        className="h-10 w-full rounded-xl border first:rounded-xl last:rounded-xl"
                         index={1}
                       />
                       <InputOTPSlot
-                        className="w-full h-10  rounded-xl first:rounded-xl last:rounded-xl border"
+                        className="h-10 w-full rounded-xl border first:rounded-xl last:rounded-xl"
                         index={2}
                       />
                       <InputOTPSlot
-                        className="w-full h-10  rounded-xl first:rounded-xl last:rounded-xl border"
+                        className="h-10 w-full rounded-xl border first:rounded-xl last:rounded-xl"
                         index={3}
                       />
                       <InputOTPSlot
-                        className="w-full h-10  rounded-xl first:rounded-xl last:rounded-xl border"
+                        className="h-10 w-full rounded-xl border first:rounded-xl last:rounded-xl"
                         index={4}
                       />
                       <InputOTPSlot
-                        className="w-full h-10  rounded-xl first:rounded-xl last:rounded-xl border"
+                        className="h-10 w-full rounded-xl border first:rounded-xl last:rounded-xl"
                         index={5}
                       />
                     </InputOTPGroup>

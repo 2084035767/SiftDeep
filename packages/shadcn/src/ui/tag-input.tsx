@@ -100,7 +100,7 @@ function TagInput({
 
   return (
     <div
-      className="w-full max-w-full sm:max-w-2xl space-y-2"
+      className="w-full max-w-full space-y-2 sm:max-w-2xl"
       ref={containerRef}
     >
       {label && (
@@ -114,12 +114,12 @@ function TagInput({
 
       <div
         className={cn(
-          'min-h-[3rem] sm:min-h-[2.5rem] p-2 sm:p-1.5',
+          'min-h-[3rem] p-2 sm:min-h-[2.5rem] sm:p-1.5',
           'rounded-lg border',
           'border-zinc-300 dark:border-zinc-700',
           'bg-white dark:bg-zinc-900',
           'focus-within:ring-2 focus-within:ring-indigo-500/30 dark:focus-within:ring-indigo-400/30',
-          'flex items-center flex-row flex-wrap gap-2 sm:gap-1.5 relative',
+          'relative flex flex-row flex-wrap items-center gap-2 sm:gap-1.5',
         )}
       >
         {tags.map((tag) => (
@@ -127,7 +127,7 @@ function TagInput({
             key={tag.id}
             className={cn(
               tagStyles.base,
-              'text-base sm:text-sm py-1 sm:py-0.5',
+              'py-1 text-base sm:py-0.5 sm:text-sm',
               tag.color || tagStyles.colors.blue,
             )}
           >
@@ -136,11 +136,11 @@ function TagInput({
               type="button"
               onClick={() => removeTag(tag.id)}
               className={cn(
-                'text-current/60 hover:text-current transition-colors',
+                'text-current/60 transition-colors hover:text-current',
                 'p-1 sm:p-0',
               )}
             >
-              <Cross2Icon className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
+              <Cross2Icon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
             </button>
           </span>
         ))}
@@ -158,7 +158,7 @@ function TagInput({
           onKeyDown={handleKeyDown}
           placeholder={tags.length === 0 ? placeholder : ''}
           className={cn(
-            'flex-1 min-w-[140px] sm:min-w-[120px] bg-transparent',
+            'min-w-[140px] flex-1 bg-transparent sm:min-w-[120px]',
             'h-8 sm:h-7',
             'text-base sm:text-sm',
             'text-zinc-900 dark:text-zinc-100',
@@ -170,20 +170,20 @@ function TagInput({
         {isOpen && (input || filteredSuggestions.length > 0) && (
           <div
             className={cn(
-              'absolute left-0 right-0 top-full mt-1 z-50',
-              'max-h-[60vh] sm:max-h-[300px] overflow-y-auto',
+              'absolute top-full right-0 left-0 z-50 mt-1',
+              'max-h-[60vh] overflow-y-auto sm:max-h-[300px]',
               'bg-white dark:bg-zinc-900',
               'border border-zinc-300 dark:border-zinc-700',
               'rounded-lg shadow-lg dark:shadow-zinc-950/50',
               'overflow-hidden',
             )}
           >
-            <div className="px-2 py-1.5 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="border-b border-zinc-200 px-2 py-1.5 dark:border-zinc-800">
               <span className="text-xs font-medium text-zinc-600 dark:text-zinc-300">
                 Choose a tag or create one
               </span>
             </div>
-            <div className="p-2 sm:p-1.5 flex flex-wrap gap-2 sm:gap-1.5">
+            <div className="flex flex-wrap gap-2 p-2 sm:gap-1.5 sm:p-1.5">
               {filteredSuggestions.map((suggestion, index) => (
                 <button
                   type="button"
@@ -197,12 +197,12 @@ function TagInput({
                     tagStyles.base,
                     selectedIndex === index
                       ? tagStyles.colors.blue
-                      : 'bg-zinc-50 text-zinc-700 border border-zinc-300 hover:border-zinc-400 dark:bg-zinc-800/50 dark:text-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600',
+                      : 'border border-zinc-300 bg-zinc-50 text-zinc-700 hover:border-zinc-400 dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:border-zinc-600',
                   )}
                 >
                   {suggestion.label}
                   {selectedIndex === index && (
-                    <CheckIcon className="w-3.5 h-3.5" />
+                    <CheckIcon className="h-3.5 w-3.5" />
                   )}
                 </button>
               ))}
@@ -229,10 +229,10 @@ function TagInput({
                     tagStyles.base,
                     selectedIndex === filteredSuggestions.length
                       ? tagStyles.colors.blue
-                      : 'bg-zinc-50 text-zinc-700 border border-zinc-300 hover:border-zinc-400 dark:bg-zinc-800/50 dark:text-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600',
+                      : 'border border-zinc-300 bg-zinc-50 text-zinc-700 hover:border-zinc-400 dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:border-zinc-600',
                   )}
                 >
-                  <PlusIcon className="w-3.5 h-3.5" />
+                  <PlusIcon className="h-3.5 w-3.5" />
                   Create "{input}"
                 </button>
               )}

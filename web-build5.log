@@ -1,0 +1,64 @@
+
+> turborepo@1.0.0 build:web F:\SiftDeep
+> pnpm build --filter=web
+
+
+> turborepo@1.0.0 build F:\SiftDeep
+> turbo build "--filter=web"
+
+• turbo 2.8.11
+• Packages in scope: web
+• Running build in 1 packages
+• Remote caching disabled
+web:build: cache miss, executing 1409630292379d7d
+web:build: 
+web:build: > web@1.0.0 build F:\SiftDeep\apps\web
+web:build: > next build
+web:build: 
+web:build: ▲ Next.js 16.1.6 (Turbopack)
+web:build: - Environments: .env.local, .env
+web:build: - Experiments (use with caution):
+web:build:   ✓ authInterrupts
+web:build:   · serverActions
+web:build:   ✓ viewTransition
+web:build: 
+web:build:   Creating an optimized production build ...
+web:build: ✓ Compiled successfully in 4.6s
+web:build:   Running TypeScript ...
+web:build:   Collecting page data using 15 workers ...
+web:build: ⚠ Using edge runtime on a page currently disables static generation for that page
+web:build:   Generating static pages using 15 workers (0/13) ...
+web:build:   Generating static pages using 15 workers (3/13) 
+web:build:   Generating static pages using 15 workers (6/13) 
+web:build:   Generating static pages using 15 workers (9/13) 
+web:build: ✓ Generating static pages using 15 workers (13/13) in 316.1ms
+web:build:   Finalizing page optimization ...
+web:build: 
+web:build: Route (app)
+web:build: ┌ ƒ /
+web:build: ├ ƒ /_not-found
+web:build: ├ ƒ /[username]
+web:build: ├ ƒ /api/auth/[...nextauth]
+web:build: ├ ƒ /auth/confirm-email
+web:build: ├ ƒ /auth/forgot-password
+web:build: ├ ƒ /auth/reset-password
+web:build: ├ ƒ /auth/sign-in
+web:build: ├ ƒ /auth/sign-up
+web:build: ├ ƒ /collections
+web:build: ├ ƒ /daily
+web:build: ├ ƒ /library
+web:build: ├ ƒ /og
+web:build: ├ ƒ /opengraph-image
+web:build: ├ ƒ /submit
+web:build: └ ƒ /topics
+web:build: 
+web:build: 
+web:build: ƒ Proxy (Middleware)
+web:build: 
+web:build: ƒ  (Dynamic)  server-rendered on demand
+web:build: 
+
+ Tasks:    1 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    13.73s 
+

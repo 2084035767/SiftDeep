@@ -31,7 +31,7 @@ import React, { Fragment } from 'react';
 const textStyles = [
   {
     name: 'Paragraph',
-    icon: <Pilcrow className="size-4 lg:size-5dark:text-white scale-x-[-1]" />,
+    icon: <Pilcrow className="lg:size-5dark:text-white size-4 scale-x-[-1]" />,
     type: 'paragraph',
     action: (editor: Editor) => {
       editor.chain().focus().setParagraph().run();
@@ -43,7 +43,7 @@ const textStyles = [
   },
   {
     name: 'Heading 1',
-    icon: <Heading1Icon className="size-4 lg:size-5dark:text-white" />,
+    icon: <Heading1Icon className="lg:size-5dark:text-white size-4" />,
     type: 1,
     action: (editor: Editor) => {
       editor.chain().focus().toggleHeading({ level: 1 }).run();
@@ -55,7 +55,7 @@ const textStyles = [
   },
   {
     name: 'Heading 2',
-    icon: <Heading2Icon className="size-4 lg:size-5dark:text-white" />,
+    icon: <Heading2Icon className="lg:size-5dark:text-white size-4" />,
     type: 2,
     action: (editor: Editor) => {
       editor.chain().focus().toggleHeading({ level: 2 }).run();
@@ -67,7 +67,7 @@ const textStyles = [
   },
   {
     name: 'Heading 3',
-    icon: <Heading3Icon className="size-4 lg:size-5dark:text-white" />,
+    icon: <Heading3Icon className="lg:size-5dark:text-white size-4" />,
     type: 3,
     action: (editor: Editor) => {
       editor.chain().focus().toggleHeading({ level: 3 }).run();
@@ -78,7 +78,7 @@ const textStyles = [
     cmd: ['⌘', '⌥', '3'],
   },
   {
-    icon: <BoldIcon className="size-4 lg:size-5dark:text-white" />,
+    icon: <BoldIcon className="lg:size-5dark:text-white size-4" />,
     name: 'Bold',
     type: 'bold',
     action: (editor: Editor) => {
@@ -90,7 +90,7 @@ const textStyles = [
     cmd: ['⌘', 'b'],
   },
   {
-    icon: <ItalicIcon className="size-4 lg:size-5dark:text-white" />,
+    icon: <ItalicIcon className="lg:size-5dark:text-white size-4" />,
     name: 'Italic',
     type: 'italic',
     action: (editor: Editor) => {
@@ -102,7 +102,7 @@ const textStyles = [
     cmd: ['⌘', 'i'],
   },
   {
-    icon: <StrikethroughIcon className="size-4 lg:size-5dark:text-white" />,
+    icon: <StrikethroughIcon className="lg:size-5dark:text-white size-4" />,
     name: 'Strikethrough',
     type: 'strike',
     action: (editor: Editor) => {
@@ -114,7 +114,7 @@ const textStyles = [
     cmd: ['⌘', '⇧', 's'],
   },
   {
-    icon: <UnderlineIcon className="size-4 lg:size-5dark:text-white" />,
+    icon: <UnderlineIcon className="lg:size-5dark:text-white size-4" />,
     name: 'Underline',
     type: 'underline',
     action: (editor: Editor) => {
@@ -126,7 +126,7 @@ const textStyles = [
     cmd: ['⌘', '⇧', 'u'],
   },
   {
-    icon: <CodeIcon className="size-4 lg:size-5dark:text-white" />,
+    icon: <CodeIcon className="lg:size-5dark:text-white size-4" />,
     name: 'Code',
     type: 'code',
     action: (editor: Editor) => {
@@ -138,7 +138,7 @@ const textStyles = [
     cmd: ['⌘', 'e'],
   },
   {
-    icon: <CodeIcon className="size-4 lg:size-5dark:text-white" />,
+    icon: <CodeIcon className="lg:size-5dark:text-white size-4" />,
     name: 'Code Block',
     type: 'code-block',
     action: (editor: Editor) => {
@@ -151,7 +151,7 @@ const textStyles = [
   },
   {
     name: 'Blockquote',
-    icon: <IconBlockquote className="size-4 lg:size-5tdark:ext-white" />,
+    icon: <IconBlockquote className="lg:size-5tdark:ext-white size-4" />,
     type: 'blockquote',
     action: (editor: Editor) => {
       editor.chain().focus().toggleBlockquote().run();
@@ -185,7 +185,7 @@ export const TextToolbar = ({
           variant="ghost"
           size="sm"
           className={cn(
-            'h-8 md:h-9 w-[128px] gap-2 px-3 font-normal focus-visible:ring-0 focus:outline-none',
+            'h-8 w-[128px] gap-2 px-3 font-normal focus:outline-none focus-visible:ring-0 md:h-9',
             editor?.isActive('heading') && 'bg-accent',
             className,
           )}
@@ -204,7 +204,7 @@ export const TextToolbar = ({
                 </>
               ) : (
                 <>
-                  <Zap className="size-4 lg:size-5dark:text-white" />
+                  <Zap className="lg:size-5dark:text-white size-4" />
                   Other
                 </>
               )}
@@ -214,7 +214,7 @@ export const TextToolbar = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-[250px]">
-        <ScrollArea className="w-full h-[200px] pr-2">
+        <ScrollArea className="h-[200px] w-full pr-2">
           {textStyles.map(({ icon, name, action, isActive, cmd }) => (
             <DropdownMenuItem
               key={name}
@@ -227,7 +227,7 @@ export const TextToolbar = ({
               <span className="flex items-center gap-1">
                 {icon} {name}
               </span>
-              <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+              <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1.5 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
                 {cmd.map((item, index) => (
                   <Fragment key={index}>
                     <span className="text-sm capitalize">{item}</span>

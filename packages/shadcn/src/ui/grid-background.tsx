@@ -1,7 +1,7 @@
 export function GridBackground() {
   return (
     <div
-      className="fixed inset-0 pointer-events-none"
+      className="pointer-events-none fixed inset-0"
       style={{
         background: 'radial-gradient(circle at center, #16A34AFF, #000000)',
       }}

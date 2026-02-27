@@ -1,5 +1,5 @@
 import NotFound from '@/app/not-found';
-import { auth } from '@/auth';
+import { authOptions } from '@/auth';
 import BackNavigation from '@/components/back-navigation';
 import AppearanceSettings from '@/components/profile/appearance-settings';
 import GeneralSettings from '@/components/profile/general-settings';
@@ -10,6 +10,7 @@ import SessionsSettings from '@/components/profile/sessions-settings';
 import { getUser } from '@/server/user.server';
 import { Card, CardContent, CardHeader, CardTitle } from '@repo/shadcn/card';
 import { Tabs, TabsContent } from '@repo/shadcn/tabs';
+import { getServerSession } from 'next-auth';
 import { cookies } from 'next/headers';
 
 const Page = async ({
@@ -20,7 +21,7 @@ const Page = async ({
   }>;
 }) => {
   const { username } = await params;
-  const session = await auth();
+  const session = await getServerSession(authOptions);
   const user = await getUser(username);
   const cookie = await cookies();
   const select_font = cookie?.get('select-font')?.value ?? '--font-geist';
@@ -29,18 +30,18 @@ const Page = async ({
     return <NotFound />;
   }
   return (
-    <section className="min-h-screen bg-background">
+    <section className="bg-background min-h-screen">
       <BackNavigation />
       <div className="bg-background shadow">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <ProfileHeader user={user} />
         </div>
       </div>
       <Tabs
         defaultValue="profile"
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
+        className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8"
       >
-        <div className="w-full flex flex-col md:flex-row gap-6">
+        <div className="flex w-full flex-col gap-6 md:flex-row">
           {session?.user && session.user.username === username && (
             <div className="w-full md:w-1/4">
               <ProfileSidebar />

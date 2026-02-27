@@ -8,7 +8,7 @@ import { useState } from 'react';
 function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="w-full relative">
+    <div className="relative w-full">
       <input
         type={type === 'password' && open ? 'text' : type}
         data-slot="input"
@@ -19,7 +19,7 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
         {...props}
       />
       {type === 'password' && (
-        <div className="absolute inset-y-0 right-0 px-3 flex justify-center items-center">
+        <div className="absolute inset-y-0 right-0 flex items-center justify-center px-3">
           <button
             type="button"
             onClick={() => setOpen((prevState) => !prevState)}

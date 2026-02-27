@@ -1,5 +1,4 @@
-import { Session } from 'next-auth';
-import { AdapterSession, AdapterUser } from 'next-auth/adapters';
+import { Session, User } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 
 /**
@@ -13,10 +12,7 @@ export const sessionCallback = ({
   session,
   token,
 }: {
-  session: {
-    user: AdapterUser;
-  } & AdapterSession &
-    Session;
+  session: Session;
   token: JWT;
 }): Session => {
   if (token) {

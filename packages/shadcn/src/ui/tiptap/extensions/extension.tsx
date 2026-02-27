@@ -31,17 +31,17 @@ import GlobalDragHandle from 'tiptap-extension-global-drag-handle';
 export const TiptapStarterKit = StarterKit.configure({
   bulletList: {
     HTMLAttributes: {
-      class: cn('list-disc list-outside leading-3 -mt-2'),
+      class: cn('-mt-2 list-outside list-disc leading-3'),
     },
   },
   orderedList: {
     HTMLAttributes: {
-      class: cn('list-decimal list-outside leading-3 -mt-2'),
+      class: cn('-mt-2 list-outside list-decimal leading-3'),
     },
   },
   listItem: {
     HTMLAttributes: {
-      class: cn('leading-normal -mb-2'),
+      class: cn('-mb-2 leading-normal'),
     },
   },
   blockquote: {
@@ -53,14 +53,14 @@ export const TiptapStarterKit = StarterKit.configure({
   code: {
     HTMLAttributes: {
       class: cn(
-        'rounded-lg bg-muted text-red-700 dark:bg-muted/90 dark:text-red-400 px-1.5 py-1 font-mono font-medium before:content-none after:content-none',
+        'bg-muted dark:bg-muted/90 rounded-lg px-1.5 py-1 font-mono font-medium text-red-700 before:content-none after:content-none dark:text-red-400',
       ),
       spellcheck: 'false',
     },
   },
   horizontalRule: {
     HTMLAttributes: {
-      class: cn('my-4 bg-border border-border'),
+      class: cn('bg-border border-border my-4'),
     },
   },
   dropcursor: {
@@ -97,7 +97,7 @@ const lowlight = createLowlight(common);
 const codeBlock = CodeBlock.configure({
   HTMLAttributes: {
     class: cn(
-      'rounded !bg-gray-800 dark:!bg-gray-900 text-gray-200 border p-5 font-mono font-medium',
+      'rounded border !bg-gray-800 p-5 font-mono font-medium text-gray-200 dark:!bg-gray-900',
     ),
     spellcheck: false,
   },
@@ -137,7 +137,7 @@ const TiptapTable = Table.extend({
   },
 }).configure({
   HTMLAttributes: {
-    class: cn('not-prose table-auto border-collapse w-full'),
+    class: cn('not-prose w-full table-auto border-collapse'),
   },
   lastColumnResizable: false,
   allowTableNodeSelection: true,
@@ -154,21 +154,21 @@ const TiptapTaskItem = TaskItem.configure({
 const TiptapTableHeader = TableHeader.configure({
   HTMLAttributes: {
     class: cn(
-      'bg-muted dark:bg-gray-900 border border-default p-2 text-start min-w-[150px] font-semibold',
+      'bg-muted border-default min-w-[150px] border p-2 text-start font-semibold dark:bg-gray-900',
     ),
   },
 });
 
 const TiptapTableCell = TableCell.configure({
   HTMLAttributes: {
-    class: cn('border border-default p-2 min-w-[150px] align-middle'),
+    class: cn('border-default min-w-[150px] border p-2 align-middle'),
   },
 });
 
 const TiptapLink = Link.configure({
   HTMLAttributes: {
     class: cn(
-      '!text-foreground underline underline-offset-[3px] transition-colors cursor-pointer',
+      '!text-foreground cursor-pointer underline underline-offset-[3px] transition-colors',
     ),
   },
   openOnClick: false,
@@ -183,7 +183,7 @@ const DragHandle = GlobalDragHandle.configure({
 
 const TiptapYoutube = Youtube.configure({
   HTMLAttributes: {
-    class: cn('border border-muted'),
+    class: cn('border-muted border'),
   },
   nocookie: true,
 });

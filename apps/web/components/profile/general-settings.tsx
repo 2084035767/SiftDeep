@@ -111,7 +111,7 @@ export default function GeneralSettings() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Once you delete your account, there is no going back. Please be
             certain.
           </p>

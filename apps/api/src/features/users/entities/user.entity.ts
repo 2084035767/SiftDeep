@@ -2,6 +2,10 @@ import { Base } from '@/common/entities';
 import { hashString } from '@/common/utils';
 import { Session } from '@/features/auth/entities/session.entity';
 import { Profile } from '@/features/users/entities/profile.entity';
+import { Video } from '@/features/videos/entities/video.entity';
+import { Submission } from '@/features/submissions/entities/submission.entity';
+import { Collection } from '@/features/collections/entities/collection.entity';
+import { Topic } from '@/features/topics/entities/topic.entity';
 import {
   BeforeInsert,
   Column,
@@ -9,6 +13,7 @@ import {
   OneToMany,
   OneToOne,
   Relation,
+  ManyToMany,
 } from 'typeorm';
 
 /**
@@ -76,6 +81,41 @@ export class User extends Base {
     cascade: true,
   })
   profile: Relation<Profile>;
+
+  /**
+   * Videos uploaded by the user.
+   * @type {Relation<Video[]>}
+   */
+  @OneToMany(() => Video, (video) => video.uploader)
+  videos: Relation<Video[]>;
+
+  /**
+   * Submissions made by the user.
+   * @type {Relation<Submission[]>}
+   */
+  @OneToMany(() => Submission, (submission) => submission.submitter)
+  submissions: Relation<Submission[]>;
+
+  /**
+   * Collections owned by the user.
+   * @type {Relation<Collection[]>}
+   */
+  @OneToMany(() => Collection, (collection) => collection.owner)
+  collections: Relation<Collection[]>;
+
+  /**
+   * Collections the user is collaborating on.
+   * @type {Relation<Collection[]>}
+   */
+  @ManyToMany(() => Collection, (collection) => collection.collaborators)
+  collaboratingCollections: Relation<Collection[]>;
+
+  /**
+   * Topics created by the user.
+   * @type {Relation<Topic[]>}
+   */
+  @OneToMany(() => Topic, (topic) => topic.creator)
+  topics: Relation<Topic[]>;
 
   /**
    * Generates username and hashes password before inserting a new user.

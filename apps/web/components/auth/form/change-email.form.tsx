@@ -33,7 +33,7 @@ const ChangeEmailForm = () => {
             <Label isRequired htmlFor="current-email">
               Verification Code
             </Label>
-            <div className="flex justify-center items-center w-full gap-5">
+            <div className="flex w-full items-center justify-center gap-5">
               <Input disabled name="otp" id="current-otp" type="otp" />
               <Button disabled>Get OTP</Button>
             </div>

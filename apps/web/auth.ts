@@ -1,23 +1,19 @@
 import { env, isAuthorized, jwtCallback, sessionCallback } from '@/lib';
 import { authorizeSignIn } from '@/server/auth.server';
-import NextAuth from 'next-auth';
-import Credentials from 'next-auth/providers/credentials';
+import NextAuth, { NextAuthOptions, Session, User } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
 
-export const {
-  handlers,
-  signIn,
-  signOut,
-  auth,
-  unstable_update: update,
-} = NextAuth({
+export const authOptions: NextAuthOptions = {
   /**
    * @description Authentication providers
    */
   providers: [
-    Credentials({
+    {
+      id: 'credentials',
       name: 'Credentials',
+      type: 'credentials',
       credentials: {
-        identifier: { label: 'Identifier', type: 'string' },
+        identifier: { label: 'Identifier', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
       /**
@@ -26,11 +22,11 @@ export const {
        */
       async authorize(credentials) {
         return await authorizeSignIn({
-          identifier: credentials.identifier as string,
-          password: credentials.password as string,
+          identifier: credentials?.identifier as string,
+          password: credentials?.password as string,
         });
       },
-    }),
+    },
   ],
 
   /**
@@ -45,7 +41,12 @@ export const {
      * @param session - Current session object (on update)
      */
     async jwt({ token, user, trigger, session }) {
-      return jwtCallback({ token, user, trigger, session });
+      return jwtCallback({ token, user, trigger, session } as {
+        token: JWT;
+        user: User;
+        trigger: 'signIn' | 'update';
+        session: Session;
+      });
     },
 
     /**
@@ -54,16 +55,10 @@ export const {
      * @param token - Current JWT token
      */
     async session({ session, token }) {
-      return sessionCallback({ session, token });
-    },
-
-    /**
-     * @description Authorization logic for middleware
-     * @param request - Request object
-     * @param auth - Auth object (contains token/session info)
-     */
-    async authorized({ request, auth }) {
-      return isAuthorized({ request, auth });
+      return sessionCallback({ session, token } as {
+        session: Session;
+        token: JWT;
+      });
     },
   },
 
@@ -87,18 +82,45 @@ export const {
   useSecureCookies: env.NODE_ENV === 'production',
 
   /**
-   * @description Required when behind a proxy (e.g., Vercel or Cloudflare)
-   */
-  redirectProxyUrl: env.API_URL,
-
-  /**
    * @description Custom pages for authentication flow
    */
   pages: {
     signIn: '/auth/sign-in',
     signOut: '/auth/sign-out',
     error: '/auth/sign-in',
-    verifyRequest: '/auth/confirm-email',
+    verifyRequest: '/', // Redirect to home after verification
     newUser: '/auth/sign-up',
   },
-});
+};
+
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };
+
+/**
+ * Wrapper for next-auth/react signIn
+ */
+export const signIn = async (
+  provider?: string,
+  options?: Record<string, unknown>,
+) => {
+  const { signIn: nextAuthSignIn } = await import('next-auth/react');
+  return nextAuthSignIn(provider, options);
+};
+
+/**
+ * Wrapper for next-auth/react signOut
+ */
+export const signOut = async (options?: Record<string, unknown>) => {
+  const { signOut: nextAuthSignOut } = await import('next-auth/react');
+  return nextAuthSignOut(options);
+};
+
+/**
+ * Wrapper for next-auth/react update
+ */
+export const update = async (data: unknown) => {
+  // @ts-ignore - unstable_update exists in next-auth v4
+  const { unstable_update } = await import('next-auth/react');
+  return unstable_update(data);
+};

@@ -55,7 +55,7 @@ export class JwtRefreshGuard implements CanActivate {
         secret: this.configService.get('REFRESH_TOKEN_SECRET'),
       });
       console.log(request.user);
-    } catch (error) {
+    } catch {
       throw new UnauthorizedException('Invalid Refresh Token');
     }
     console.log('request.body', request.body);

@@ -36,9 +36,10 @@ export class UsersController {
   @Get()
   async findAll(): Promise<{ message: string; data: any[] }> {
     const users = await this.usersService.findAll();
-    const data = users.map(({ password, ...user }) => ({
-      ...user,
-    }));
+    const data = users.map(({ password, ...user }) => {
+      void password;
+      return { ...user };
+    });
     return { message: 'Users fetched successfully', data };
   }
 
@@ -55,6 +56,7 @@ export class UsersController {
   ): Promise<{ message: string; data: any }> {
     const user = await this.usersService.findOne(identifier);
     const { password, ...data } = user;
+    void password;
     return { message: 'User fetched successfully', data };
   }
 

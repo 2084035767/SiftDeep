@@ -90,8 +90,8 @@ export function ImageCropper({
 
   return (
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-      <DialogContent className="p-0 gap-0">
-        <div className="p-6 size-full">
+      <DialogContent className="gap-0 p-0">
+        <div className="size-full p-6">
           <ReactCrop
             crop={crop}
             onChange={(_, percentCrop) => setCrop(percentCrop)}
@@ -102,7 +102,7 @@ export function ImageCropper({
             <Avatar className="size-full rounded-none">
               <AvatarImage
                 ref={imgRef}
-                className="size-full rounded-none "
+                className="size-full rounded-none"
                 alt="Image Cropper Shell"
                 src={selectedFile?.preview}
                 onLoad={onImageLoad}
@@ -113,7 +113,7 @@ export function ImageCropper({
             </Avatar>
           </ReactCrop>
         </div>
-        <DialogFooter className="p-6 pt-0 justify-center ">
+        <DialogFooter className="justify-center p-6 pt-0">
           <DialogClose asChild>
             <Button
               size={'sm'}

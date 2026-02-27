@@ -72,7 +72,7 @@ export const AlignmentToolbar = () => {
         <Button
           variant="ghost"
           size="sm"
-          className="h-8 w-8 p-0 sm:h-9 sm:w-9 font-normal"
+          className="h-8 w-8 p-0 font-normal sm:h-9 sm:w-9"
         >
           {alignmentOptions[findIndex(currentTextAlign())]?.icon}
         </Button>
@@ -85,7 +85,7 @@ export const AlignmentToolbar = () => {
         className="w-max"
         align="end"
       >
-        <DropdownMenuGroup className=" w-full">
+        <DropdownMenuGroup className="w-full">
           {alignmentOptions.map((option, index) => (
             <DropdownMenuItem
               onSelect={() => {

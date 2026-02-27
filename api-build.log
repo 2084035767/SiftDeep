@@ -1,0 +1,27 @@
+
+> turborepo@1.0.0 build:api F:\SiftDeep
+> pnpm build --filter=api
+
+
+> turborepo@1.0.0 build F:\SiftDeep
+> turbo build "--filter=api"
+
+• turbo 2.8.11
+• Packages in scope: api
+• Running build in 1 packages
+• Remote caching disabled
+api:build: cache miss, executing 94a7a54ac2aeedcf
+api:build: 
+api:build: > api@1.0.0 build F:\SiftDeep\apps\api
+api:build: > nest build
+api:build: 
+api:build: -  TSC  Initializing type checker...
+api:build: ✔  TSC  Initializing type checker...
+api:build: >  TSC  Found 0 issues.
+api:build: >  SWC  Running...
+api:build: Successfully compiled: 117 files with swc (306.14ms)
+
+ Tasks:    1 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    6.196s 
+

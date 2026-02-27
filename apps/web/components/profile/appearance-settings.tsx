@@ -34,12 +34,12 @@ const AppearanceSettings = ({ select_font }: { select_font: string }) => {
         <CardContent>
           <div>
             <RadioGroup
-              className="grid grid-cols-2 gap-5 max-w-sm p-0"
+              className="grid max-w-sm grid-cols-2 gap-5 p-0"
               defaultValue={resolvedTheme === 'dark' ? 'dark' : 'light'}
               onValueChange={(value) => setTheme(value)}
             >
-              <div className={cn('relative rounded-sm overflow-hidden')}>
-                <div className="absolute inset-x-0 p-2 flex items-center">
+              <div className={cn('relative overflow-hidden rounded-sm')}>
+                <div className="absolute inset-x-0 flex items-center p-2">
                   <div className={cn('hidden')}>
                     <RadioGroupItem value="light" id="light" />
                   </div>
@@ -52,19 +52,19 @@ const AppearanceSettings = ({ select_font }: { select_font: string }) => {
                         <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                       </div>
                       <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-xs">
-                        <div className="size-4 lg:size-5rounded-full bg-[#ecedef]" />
+                        <div className="lg:size-5rounded-full size-4 bg-[#ecedef]" />
                         <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                       </div>
                       <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-xs">
-                        <div className="size-4 lg:size-5rounded-full bg-[#ecedef]" />
+                        <div className="lg:size-5rounded-full size-4 bg-[#ecedef]" />
                         <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                       </div>
                     </div>
                   </div>
                 </Label>
               </div>
-              <div className={cn('relative rounded-sm overflow-hidden')}>
-                <div className="absolute inset-x-0 p-2 flex items-center">
+              <div className={cn('relative overflow-hidden rounded-sm')}>
+                <div className="absolute inset-x-0 flex items-center p-2">
                   <div className={cn('hidden')}>
                     <RadioGroupItem value="dark" id="dark" />
                   </div>
@@ -77,11 +77,11 @@ const AppearanceSettings = ({ select_font }: { select_font: string }) => {
                         <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                       </div>
                       <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-xs">
-                        <div className="size-4 lg:size-5rounded-full bg-slate-400" />
+                        <div className="lg:size-5rounded-full size-4 bg-slate-400" />
                         <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                       </div>
                       <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-xs">
-                        <div className="size-4 lg:size-5rounded-full bg-slate-400" />
+                        <div className="lg:size-5rounded-full size-4 bg-slate-400" />
                         <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                       </div>
                     </div>

@@ -163,26 +163,26 @@ function ImagePlaceholderComponent(props: NodeViewProps) {
           <div
             onClick={() => setIsExpanded(true)}
             className={cn(
-              'group relative flex cursor-pointer flex-col items-center gap-4 rounded-lg border-2 border-dashed p-8 transition-all hover:bg-accent',
+              'group hover:bg-accent relative flex cursor-pointer flex-col items-center gap-4 rounded-lg border-2 border-dashed p-8 transition-all',
               selected && 'border-primary bg-primary/5',
               isDragActive && 'border-primary bg-primary/5',
               error && 'border-destructive bg-destructive/5',
             )}
           >
-            <div className="rounded-full bg-background p-4 shadow-sm transition-colors group-hover:bg-accent">
+            <div className="bg-background group-hover:bg-accent rounded-full p-4 shadow-sm transition-colors">
               <Image className="h-6 w-6" />
             </div>
             <div className="text-center">
               <p className="text-sm font-medium">
                 Click to upload or drag and drop
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 SVG, PNG, JPG or GIF
               </p>
             </div>
           </div>
         ) : (
-          <div className="rounded-lg border bg-card p-4 shadow-sm">
+          <div className="bg-card rounded-lg border p-4 shadow-sm">
             <div className="mb-4 flex items-center justify-end">
               <Button
                 variant="ghost"
@@ -244,7 +244,7 @@ function ImagePlaceholderComponent(props: NodeViewProps) {
                           </Button>
                           <Button disabled={uploading}>
                             {uploading && (
-                              <Loader2 className="mr-2 size-4 lg:size-5animate-spin" />
+                              <Loader2 className="lg:size-5animate-spin mr-2 size-4" />
                             )}
                             Upload
                           </Button>
@@ -265,12 +265,12 @@ function ImagePlaceholderComponent(props: NodeViewProps) {
                         htmlFor="image-upload"
                         className="flex cursor-pointer flex-col items-center gap-4"
                       >
-                        <Upload className="h-8 w-8 text-muted-foreground" />
+                        <Upload className="text-muted-foreground h-8 w-8" />
                         <div>
                           <p className="text-sm font-medium">
                             Click to upload or drag and drop
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-muted-foreground text-xs">
                             SVG, PNG, JPG or GIF
                           </p>
                         </div>
@@ -278,7 +278,7 @@ function ImagePlaceholderComponent(props: NodeViewProps) {
                     </>
                   )}
                   {error && (
-                    <p className="mt-2 text-sm text-destructive">{error}</p>
+                    <p className="text-destructive mt-2 text-sm">{error}</p>
                   )}
                 </div>
               </TabsContent>
@@ -295,7 +295,7 @@ function ImagePlaceholderComponent(props: NodeViewProps) {
                       placeholder="Enter image URL..."
                     />
                     {urlError && (
-                      <p className="text-xs text-destructive">
+                      <p className="text-destructive text-xs">
                         Please enter a valid URL
                       </p>
                     )}

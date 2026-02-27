@@ -78,7 +78,7 @@ export const CodeLanguage = ({ editor }: { editor: Editor | null }) => {
           {editorState.getLanguage && (
             <Button className="" variant="outline" size="sm">
               {editorState.getLanguage}
-              <ChevronDownIcon className="size-4 lg:size-5ms-1 text-default-foreground" />
+              <ChevronDownIcon className="lg:size-5ms-1 text-default-foreground size-4" />
             </Button>
           )}
         </PopoverTrigger>
@@ -86,7 +86,7 @@ export const CodeLanguage = ({ editor }: { editor: Editor | null }) => {
           <div className="p-1">
             <Input
               placeholder="Search..."
-              className="h-9 focus-visible:ring-0 focus-visible:border-primary"
+              className="focus-visible:border-primary h-9 focus-visible:ring-0"
               type="search"
               value={search}
               onChange={(evt) => setSearch(evt.target.value)}
@@ -105,7 +105,7 @@ export const CodeLanguage = ({ editor }: { editor: Editor | null }) => {
                   return (
                     <div
                       key={i}
-                      className="hover:bg-accent p-1 rounded-md cursor-pointer"
+                      className="hover:bg-accent cursor-pointer rounded-md p-1"
                       onClick={() => {
                         editor
                           .chain()

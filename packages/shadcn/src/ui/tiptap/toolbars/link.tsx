@@ -52,7 +52,7 @@ export const LinkToolbar = ({ className, ...props }: ButtonProps) => {
         side="bottom"
       >
         <div className="relative">
-          <PopoverClose className="absolute right-3 top-3">
+          <PopoverClose className="absolute top-3 right-3">
             <X className="size-4" />
           </PopoverClose>
           <form onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ export const LinkToolbar = ({ className, ...props }: ButtonProps) => {
               <Input
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
-                className="w-full focus:outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-0 border-primary"
+                className="border-primary w-full focus:outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-0"
                 placeholder="https://example.com"
               />
               <div className="flex items-center gap-3">
@@ -69,7 +69,7 @@ export const LinkToolbar = ({ className, ...props }: ButtonProps) => {
                   <Button
                     type="reset"
                     size="sm"
-                    className="h-8 text-gray-11"
+                    className="text-gray-11 h-8"
                     variant="outline"
                     onClick={() => {
                       editor?.chain().focus().unsetLink().run();

@@ -1,12 +1,15 @@
 import Providers from '@/components/providers';
+import ErrorBoundary from '@/components/error-boundary';
+import GlobalLoading from '@/components/global-loading';
 import { APP_NAME, APP_URL } from '@repo/constants/app';
 import { cn } from '@repo/shadcn/lib/utils';
 import { Metadata } from 'next';
 import { Geist, Geist_Mono, Roboto, Roboto_Mono } from 'next/font/google';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 /** Tailwindcss **/
 import '@repo/shadcn/shadcn.css';
+import './siftdeep.css';
 import { Toaster } from '@repo/shadcn/sonner';
 import { cookies } from 'next/headers';
 
@@ -40,23 +43,15 @@ export const metadata = {
     default: APP_NAME,
     template: `%s | ${APP_NAME}`,
   },
-  description:
-    'Turbo NPN is the next-generation social platform where you connect, share, and discover in real time. Join the conversation and stay in the loop with what matters most to you.',
+  description: '深选 (SiftDeep) - B 站优质内容精选平台，让每一次浏览都有价值。',
   keywords: [
-    APP_NAME,
-    'social media platform',
-    'real-time updates',
-    'microblogging app',
-    'trending topics',
-    'community engagement',
-    'follow creators',
-    'Myanmar social app',
-    'connect with friends',
-    'share thoughts',
-    'post updates',
-    'live conversations',
-    'digital community',
-    'social network Myanmar',
+    '深选',
+    'SiftDeep',
+    'B 站',
+    '哔哩哔哩',
+    '视频精选',
+    '内容策展',
+    '优质视频',
   ],
   alternates: {
     canonical: '/',
@@ -65,9 +60,9 @@ export const metadata = {
     type: 'website',
     title: APP_NAME,
     description:
-      'Join Turbo NPN to connect with your world. Share moments, follow trending topics, and be part of a real-time conversation.',
+      '深选 (SiftDeep) - B 站优质内容精选平台，人工精选 + 算法兜底，让每一次浏览都有价值。',
     url: APP_URL,
-    locale: 'en-US',
+    locale: 'zh-CN',
   },
   robots: {
     index: true,
@@ -79,12 +74,6 @@ export const metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: APP_NAME,
-    description:
-      'Turbo NPN — the real-time social network for discovering, sharing, and connecting across Myanmar and beyond.',
   },
   verification: {
     google: 'your-google-verification-token',
@@ -105,10 +94,10 @@ const RootLayout = async ({
   const select_font =
     (await cookies()).get('select-font')?.value ?? '--font-geist';
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning>
       <body
         className={cn(
-          'antialiased tracking-normal leading-normal',
+          'leading-normal tracking-normal antialiased',
           geist.variable,
           geist_mono.variable,
           roboto.variable,
@@ -119,7 +108,11 @@ const RootLayout = async ({
         }}
         suppressHydrationWarning
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <ErrorBoundary>
+            <Suspense fallback={<GlobalLoading />}>{children}</Suspense>
+          </ErrorBoundary>
+        </Providers>
         <Toaster />
       </body>
     </html>

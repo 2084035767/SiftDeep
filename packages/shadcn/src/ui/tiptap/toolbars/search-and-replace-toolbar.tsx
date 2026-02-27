@@ -82,13 +82,13 @@ export function SearchAndReplaceToolbar() {
         onEscapeKeyDown={() => {
           setOpen(false);
         }}
-        className="relative flex w-vw md:w-[400px] px-3 py-2.5"
+        className="w-vw relative flex px-3 py-2.5 md:w-[400px]"
       >
         {!replacing ? (
-          <div className={cn('w-full relative grid gap-1.5 items-center')}>
+          <div className={cn('relative grid w-full items-center gap-1.5')}>
             <Input
               value={searchText}
-              className=" w-full focus:outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-0 border-primary"
+              className="border-primary w-full focus:outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-0"
               onChange={(e) => {
                 setSearchText(e.target.value);
               }}
@@ -116,7 +116,7 @@ export function SearchAndReplaceToolbar() {
                 >
                   <ArrowRightIcon className="size-4" />
                 </Button>
-                <Separator orientation="vertical" className="h-7 mx-0.5" />
+                <Separator orientation="vertical" className="mx-0.5 h-7" />
                 <Button
                   onClick={() => {
                     setReplacing(true);
@@ -146,7 +146,7 @@ export function SearchAndReplaceToolbar() {
               onClick={() => {
                 setOpen(false);
               }}
-              className="absolute right-3 top-3 size-4 lg:size-5cursor-pointer"
+              className="lg:size-5cursor-pointer absolute top-3 right-3 size-4"
             />
             <div className="flex w-full items-center gap-3">
               <Button
@@ -164,7 +164,7 @@ export function SearchAndReplaceToolbar() {
 
             <div className="my-2 w-full">
               <div className="mb-3">
-                <Label className="mb-1 text-xs text-gray-11">Search</Label>
+                <Label className="text-gray-11 mb-1 text-xs">Search</Label>
                 <Input
                   value={searchText}
                   onChange={(e) => {
@@ -178,7 +178,7 @@ export function SearchAndReplaceToolbar() {
                 </span>
               </div>
               <div className="mb-2">
-                <Label className="mb-1 text-xs text-gray-11">
+                <Label className="text-gray-11 mb-1 text-xs">
                   Replace with
                 </Label>
                 <Input
@@ -200,7 +200,7 @@ export function SearchAndReplaceToolbar() {
                 />
                 <Label
                   htmlFor="match_case"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
                   Match case
                 </Label>

@@ -20,7 +20,7 @@ export const TableMenu = ({ editor }: { editor: Editor | null }) => {
     return null;
   }
 
-  const menuItemClass = cn('px-2 py-1.5 text-sm hover:bg-accent rounded-md');
+  const menuItemClass = cn('hover:bg-accent rounded-md px-2 py-1.5 text-sm');
 
   return (
     <FloatingMenu
@@ -76,7 +76,7 @@ export const TableMenu = ({ editor }: { editor: Editor | null }) => {
             <TooltipContent>Column</TooltipContent>
           </Tooltip>
           <PopoverContent
-            className="flex max-h-80 w-40 p-1 flex-col overflow-hidden overflow-y-auto rounded border shadow-xl"
+            className="flex max-h-80 w-40 flex-col overflow-hidden overflow-y-auto rounded border p-1 shadow-xl"
             align="end"
           >
             <div className="flex flex-col">
@@ -127,7 +127,7 @@ export const TableMenu = ({ editor }: { editor: Editor | null }) => {
             <TooltipContent>Row</TooltipContent>
           </Tooltip>
           <PopoverContent
-            className="flex max-h-80 w-40 p-1 flex-col overflow-hidden overflow-y-auto rounded border shadow-xl"
+            className="flex max-h-80 w-40 flex-col overflow-hidden overflow-y-auto rounded border p-1 shadow-xl"
             align="end"
           >
             <div className="flex flex-col">
@@ -178,7 +178,7 @@ export const TableMenu = ({ editor }: { editor: Editor | null }) => {
             <TooltipContent>Cell</TooltipContent>
           </Tooltip>
           <PopoverContent
-            className="flex max-h-80 w-40 p-1 flex-col overflow-hidden overflow-y-auto rounded border shadow-xl"
+            className="flex max-h-80 w-40 flex-col overflow-hidden overflow-y-auto rounded border p-1 shadow-xl"
             align="end"
           >
             <div className="flex flex-col">
@@ -229,7 +229,7 @@ export const TableMenu = ({ editor }: { editor: Editor | null }) => {
             <TooltipContent>Options</TooltipContent>
           </Tooltip>
           <PopoverContent
-            className="flex max-h-80 w-40 p-1 flex-col overflow-hidden overflow-y-auto rounded border shadow-xl"
+            className="flex max-h-80 w-40 flex-col overflow-hidden overflow-y-auto rounded border p-1 shadow-xl"
             align="end"
           >
             <div className="flex flex-col">

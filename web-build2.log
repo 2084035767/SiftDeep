@@ -1,0 +1,190 @@
+
+> turborepo@1.0.0 build:web F:\SiftDeep
+> pnpm build --filter=web
+
+
+> turborepo@1.0.0 build F:\SiftDeep
+> turbo build "--filter=web"
+
+• turbo 2.8.11
+• Packages in scope: web
+• Running build in 1 packages
+• Remote caching disabled
+web:build: cache miss, executing 3f7ba7db5e0c4476
+web:build: 
+web:build: > web@1.0.0 build F:\SiftDeep\apps\web
+web:build: > next build
+web:build: 
+web:build: ▲ Next.js 16.1.6 (Turbopack)
+web:build: - Environments: .env.local, .env
+web:build: - Experiments (use with caution):
+web:build:   ✓ authInterrupts
+web:build:   · serverActions
+web:build:   ✓ viewTransition
+web:build: 
+web:build:   Creating an optimized production build ...
+web:build: 
+web:build: > Build error occurred
+web:build: Error: Turbopack build failed with 10 errors:
+web:build: ./apps/web/app/collections/page.tsx:2:1
+web:build: Export Footer doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mCollections[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export Footer was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import QuickFilters?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/daily/page.tsx:2:1
+web:build: Export Footer doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mDailyExpress[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export Footer was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import QuickFilters?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/library/page.tsx:2:1
+web:build: Export Footer doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mLibrary[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export Footer was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import QuickFilters?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/submit/page.tsx:2:1
+web:build: Export Footer doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mSubmitForm[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export Footer was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import QuickFilters?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/topics/page.tsx:2:1
+web:build: Export Footer doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mDeepTopics[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export Footer was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import QuickFilters?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/collections/page.tsx:2:1
+web:build: Export TopNotification doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mCollections[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export TopNotification was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import Collections?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/daily/page.tsx:2:1
+web:build: Export TopNotification doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mDailyExpress[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export TopNotification was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import Collections?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/library/page.tsx:2:1
+web:build: Export TopNotification doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mLibrary[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export TopNotification was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import Collections?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/submit/page.tsx:2:1
+web:build: Export TopNotification doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mSubmitForm[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export TopNotification was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import Collections?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build: ./apps/web/app/topics/page.tsx:2:1
+web:build: Export TopNotification doesn't exist in target module
+web:build: [0m [90m 1 |[39m [36mimport[39m { [33mDeepTopics[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build: [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mTopNotification[39m[33m,[39m [33mNavbar[39m[33m,[39m [33mFooter[39m } [36mfrom[39m [32m'@/components/siftdeep'[39m[33m;[39m
+web:build:  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+web:build:  [90m 3 |[39m [36mimport[39m { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+web:build:  [90m 4 |[39m
+web:build:  [90m 5 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {[0m
+web:build: 
+web:build: The export TopNotification was not found in module [project]/apps/web/components/siftdeep/index.ts [app-rsc] (ecmascript).
+web:build: Did you mean to import Collections?
+web:build: All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+web:build: 
+web:build: 
+web:build:     at <unknown> (./apps/web/app/collections/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/daily/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/library/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/submit/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/topics/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/collections/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/daily/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/library/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/submit/page.tsx:2:1)
+web:build:     at <unknown> (./apps/web/app/topics/page.tsx:2:1)
+web:build:  ELIFECYCLE  Command failed with exit code 1.
+web:build: ERROR: command finished with error: command (F:\SiftDeep\apps\web) D:\app\scoop\apps\pnpm\current\pnpm.exe run build exited (1)
+web#build: command (F:\SiftDeep\apps\web) D:\app\scoop\apps\pnpm\current\pnpm.exe run build exited (1)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    7.553s 
+Failed:    web#build
+
+ ERROR  run failed: command  exited (1)
+ ELIFECYCLE  Command failed with exit code 1.
+ ELIFECYCLE  Command failed with exit code 1.

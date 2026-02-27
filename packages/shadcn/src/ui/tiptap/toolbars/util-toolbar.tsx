@@ -24,7 +24,7 @@ import React, { Fragment } from 'react';
 const utilStyles = [
   {
     name: 'Ordered List',
-    icon: <ListOrdered className="size-4 lg:size-5dark:text-white" />,
+    icon: <ListOrdered className="lg:size-5dark:text-white size-4" />,
     type: 'orderedList',
     action: (editor: Editor) => {
       return editor.chain().focus().toggleOrderedList().run();
@@ -39,7 +39,7 @@ const utilStyles = [
   },
   {
     name: 'Bullet List',
-    icon: <List className="size-4 lg:size-5dark:text-white" />,
+    icon: <List className="lg:size-5dark:text-white size-4" />,
     type: 'bulletList',
     action: (editor: Editor) => {
       editor.chain().focus().toggleBulletList().run();
@@ -54,7 +54,7 @@ const utilStyles = [
   },
   {
     name: 'Task List',
-    icon: <ListTodo className="size-4 lg:size-5dark:text-white" />,
+    icon: <ListTodo className="lg:size-5dark:text-white size-4" />,
     type: 'taskList',
     action: (editor: Editor) => {
       editor.chain().focus().toggleTaskList().run();
@@ -69,7 +69,7 @@ const utilStyles = [
   },
   {
     name: 'Table',
-    icon: <Table className="size-4 lg:size-5dark:text-white" />,
+    icon: <Table className="lg:size-5dark:text-white size-4" />,
     type: 'table',
     action: (editor: Editor) => {
       editor
@@ -92,7 +92,7 @@ const utilStyles = [
   },
   {
     name: 'Image',
-    icon: <Image className="size-4 lg:size-5dark:text-white" />,
+    icon: <Image className="lg:size-5dark:text-white size-4" />,
     type: 'image-placeholder',
     action: (editor: Editor) => {
       editor?.chain().focus().insertImagePlaceholder().run();
@@ -115,7 +115,7 @@ const UtilToolbar = ({
           variant="ghost"
           size="sm"
           className={cn(
-            'size-8 gap-2 px-3 font-normal focus-visible:ring-0 focus:outline-none',
+            'size-8 gap-2 px-3 font-normal focus:outline-none focus-visible:ring-0',
             editor?.isActive('heading') && 'bg-accent',
             className,
           )}
@@ -141,7 +141,7 @@ const UtilToolbar = ({
                   {icon} {name}
                 </span>
                 {cmd && (
-                  <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+                  <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1.5 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
                     {cmd.map((item, index) => (
                       <Fragment key={index}>
                         <span className="text-sm capitalize">{item}</span>

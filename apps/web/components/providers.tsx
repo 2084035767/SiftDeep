@@ -1,4 +1,5 @@
-import { auth } from '@/auth';
+'use client';
+
 import { ThemeProvider } from '@repo/shadcn/themes-provider';
 import { SessionProvider } from 'next-auth/react';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
@@ -7,8 +8,8 @@ import { ReactNode } from 'react';
 type ProvidersProps = {
   children: ReactNode;
 };
-const Providers = async ({ children }: Readonly<ProvidersProps>) => {
-  const session = await auth();
+
+const Providers = ({ children }: Readonly<ProvidersProps>) => {
   return (
     <ThemeProvider
       attribute="class"
@@ -16,7 +17,7 @@ const Providers = async ({ children }: Readonly<ProvidersProps>) => {
       enableSystem
       disableTransitionOnChange={false}
     >
-      <SessionProvider session={session}>
+      <SessionProvider>
         <NuqsAdapter>{children}</NuqsAdapter>
       </SessionProvider>
     </ThemeProvider>

@@ -41,9 +41,9 @@ const ProfileSidebar = () => {
     },
   ];
   return (
-    <div className="w-full bg-card text-card-foreground rounded-xl border shadow-sm p-4">
-      <h2 className="font-semibold text-lg mb-4">Settings</h2>
-      <TabsList className="grid gap-1 grid-cols-1 w-full px-0 h-auto bg-card p-0">
+    <div className="bg-card text-card-foreground w-full rounded-xl border p-4 shadow-sm">
+      <h2 className="mb-4 text-lg font-semibold">Settings</h2>
+      <TabsList className="bg-card grid h-auto w-full grid-cols-1 gap-1 p-0 px-0">
         {menuItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -53,7 +53,7 @@ const ProfileSidebar = () => {
                 buttonVariants({
                   variant: 'ghost',
                   class:
-                    'min-w-full justify-start data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-xs data-[state=active]:hover:bg-secondary/80',
+                    'data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:hover:bg-secondary/80 min-w-full justify-start data-[state=active]:shadow-xs',
                 }),
               )}
               value={item.id}

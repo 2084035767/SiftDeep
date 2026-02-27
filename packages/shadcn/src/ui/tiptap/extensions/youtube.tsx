@@ -105,7 +105,7 @@ function TiptapYouTube({
       ref={containerRef}
       data-type="youtube"
       className={cn(
-        'group relative flex flex-col border-2 border-transparent rounded-md transition-all',
+        'group relative flex flex-col rounded-md border-2 border-transparent transition-all',
         selected && 'border-blue-300',
         node.attrs.align === 'left' && 'left-0',
         node.attrs.align === 'center' && 'mx-auto',
@@ -129,7 +129,7 @@ function TiptapYouTube({
 
       {editingCaption ? (
         <Input
-          className="mt-2 text-center text-sm text-muted-foreground"
+          className="text-muted-foreground mt-2 text-center text-sm"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
           onBlur={() => {
@@ -139,7 +139,7 @@ function TiptapYouTube({
         />
       ) : (
         <p
-          className="mt-2 cursor-text text-center text-sm text-muted-foreground"
+          className="text-muted-foreground mt-2 cursor-text text-center text-sm"
           onClick={() => editor?.isEditable && setEditingCaption(true)}
         >
           {caption || 'Add a caption...'}
@@ -149,7 +149,7 @@ function TiptapYouTube({
       {editor?.isEditable && (
         <div
           className={cn(
-            'absolute right-4 top-4 flex items-center gap-1 rounded-md border bg-background/80 p-1 backdrop-blur transition-opacity',
+            'bg-background/80 absolute top-4 right-4 flex items-center gap-1 rounded-md border p-1 backdrop-blur transition-opacity',
             opened ? 'opacity-100' : 'opacity-0 group-hover:opacity-100',
           )}
         >
@@ -190,7 +190,7 @@ function TiptapYouTube({
                 <IconBrandYoutubeFill className="size-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="p-4 space-y-2 w-64">
+            <DropdownMenuContent align="start" className="w-64 space-y-2 p-4">
               <Input
                 value={videoUrl}
                 onChange={(e) => setVideoUrl(e.target.value)}
@@ -205,7 +205,7 @@ function TiptapYouTube({
           <Button
             size="icon"
             variant="ghost"
-            className="size-7 text-destructive"
+            className="text-destructive size-7"
             onClick={deleteNode}
           >
             <Trash className="size-4" />

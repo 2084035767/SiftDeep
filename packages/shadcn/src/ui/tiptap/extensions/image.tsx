@@ -293,13 +293,13 @@ function TiptapImage(props: NodeViewProps) {
             onChange={handleCaptionChange}
             onBlur={handleCaptionBlur}
             onKeyDown={handleCaptionKeyDown}
-            className="mt-2 text-center text-sm text-muted-foreground focus:ring-0"
+            className="text-muted-foreground mt-2 text-center text-sm focus:ring-0"
             placeholder="Add a caption..."
             autoFocus
           />
         ) : (
           <div
-            className="mt-2 cursor-text text-center text-sm text-muted-foreground"
+            className="text-muted-foreground mt-2 cursor-text text-center text-sm"
             onClick={() => editor?.isEditable && setEditingCaption(true)}
           >
             {caption || 'Add a caption...'}
@@ -309,7 +309,7 @@ function TiptapImage(props: NodeViewProps) {
         {editor?.isEditable && (
           <div
             className={cn(
-              'absolute right-4 top-4 flex items-center gap-1 rounded-md border bg-background/80 p-1 opacity-0 backdrop-blur transition-opacity',
+              'bg-background/80 absolute top-4 right-4 flex items-center gap-1 rounded-md border p-1 opacity-0 backdrop-blur transition-opacity',
               !resizing && 'group-hover:opacity-100',
               openedMore && 'opacity-100',
             )}
@@ -367,7 +367,7 @@ function TiptapImage(props: NodeViewProps) {
                   <DropdownMenuSubTrigger>
                     <ImageIcon className="mr-2 size-4" /> Replace Image
                   </DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent className="p-2 w-fit min-w-52">
+                  <DropdownMenuSubContent className="w-fit min-w-52 p-2">
                     <div className="space-y-4">
                       <div>
                         <p className="mb-2 text-xs font-medium">Upload Image</p>
@@ -381,11 +381,11 @@ function TiptapImage(props: NodeViewProps) {
                         />
                         <label
                           htmlFor="replace-image-upload"
-                          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border-2 border-dashed p-4 hover:bg-accent"
+                          className="hover:bg-accent flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border-2 border-dashed p-4"
                         >
                           {uploading ? (
                             <>
-                              <Loader2 className="size-4 lg:size-5animate-spin" />
+                              <Loader2 className="lg:size-5animate-spin size-4" />
                               <span>Uploading...</span>
                             </>
                           ) : (
@@ -396,7 +396,7 @@ function TiptapImage(props: NodeViewProps) {
                           )}
                         </label>
                         {error && (
-                          <p className="mt-2 text-xs text-destructive">
+                          <p className="text-destructive mt-2 text-xs">
                             {error}
                           </p>
                         )}
