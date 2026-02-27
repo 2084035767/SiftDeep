@@ -76,12 +76,20 @@ export function Navbar() {
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="z-[10000] w-48">
-                <DropdownMenuItem>个人中心</DropdownMenuItem>
-                <DropdownMenuItem>我的收藏</DropdownMenuItem>
+                <Link href="/profile" className="flex w-full cursor-pointer items-center rounded-md px-2 py-1.5 text-sm outline-none hover:bg-gray-100">
+                  个人中心
+                </Link>
+                <Link href="/collections" className="flex w-full cursor-pointer items-center rounded-md px-2 py-1.5 text-sm outline-none hover:bg-gray-100">
+                  我的收藏
+                </Link>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-red-500">
+                <Link href="/submit/list" className="flex w-full cursor-pointer items-center rounded-md px-2 py-1.5 text-sm outline-none hover:bg-gray-100">
+                  我的投稿
+                </Link>
+                <DropdownMenuSeparator />
+                <div className="flex w-full cursor-pointer items-center rounded-md px-2 py-1.5 text-sm text-red-500 outline-none hover:bg-red-50">
                   退出登录
-                </DropdownMenuItem>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
 
