@@ -1,26 +1,68 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, Info, AlertCircle, X, Check } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Send, Info, AlertCircle } from 'lucide-react';
 
 export function SubmitForm() {
-  const [showSuccess, setShowSuccess] = useState(false);
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [bvNumber, setBvNumber] = useState('');
   const [category, setCategory] = useState('');
   const [reason, setReason] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 简单验证 BV 号
+    setSubmitError('');
+
+    // 验证 BV 号
     const bvRegex = /^BV[0-9A-Za-z]{10,}$/;
     if (!bvRegex.test(bvNumber.trim())) {
       setError(true);
       setTimeout(() => setError(false), 3000);
       return;
     }
-    setShowSuccess(true);
+
+    // 验证分类
+    if (!category) {
+      setSubmitError('请选择内容分类');
+      return;
+    }
+
+    // 验证推荐理由
+    if (reason.trim().length < 20) {
+      setSubmitError('推荐理由至少需要 20 个字');
+      return;
+    }
+
+    // 验证协议
+    if (!agreed) {
+      setSubmitError('请先确认社区规范');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // TODO: 调用 API 提交投稿
+      // await fetch('/api/submissions', {
+      //   method: 'POST',
+      //   body: JSON.stringify({ bvId: bvNumber, category, reason }),
+      // });
+
+      // 模拟提交成功
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // 跳转到投稿列表页
+      router.push('/submit/list');
+    } catch (err) {
+      setSubmitError('提交失败，请稍后重试');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -162,12 +204,30 @@ export function SubmitForm() {
                 </label>
               </div>
 
+              {/* 错误提示 */}
+              {submitError && (
+                <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
+                  <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600" />
+                  <div className="text-sm text-red-700">{submitError}</div>
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="flex min-h-[48px] w-full transform items-center justify-center rounded-xl bg-[#FB7299] px-6 py-3.5 font-medium text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E55A8A] hover:shadow-lg"
+                disabled={isSubmitting}
+                className="flex min-h-[48px] w-full transform items-center justify-center rounded-xl bg-[#FB7299] px-6 py-3.5 font-medium text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E55A8A] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md"
               >
-                <Send className="mr-2 h-5 w-5" aria-hidden="true" />
-                提交推荐
+                {isSubmitting ? (
+                  <>
+                    <div className="mr-2 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                    提交中...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-5 w-5" aria-hidden="true" />
+                    提交推荐
+                  </>
+                )}
               </button>
             </form>
 
@@ -214,79 +274,8 @@ export function SubmitForm() {
               </ul>
             </div>
           </div>
-
-          {/* 投稿成功弹窗 */}
-          {showSuccess && (
-            <div
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50"
-              onClick={() => setShowSuccess(false)}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-title"
-            >
-              <div
-                className="mx-4 w-full max-w-md scale-95 transform rounded-2xl bg-white p-8 opacity-0 transition-all"
-                style={{ animation: 'modalIn 0.3s forwards' }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="relative text-center">
-                  <button
-                    onClick={() => setShowSuccess(false)}
-                    className="btn-base absolute top-0 right-0 rounded-lg text-[#64748B] transition-colors duration-200 hover:text-[#0F172A]"
-                    aria-label="关闭弹窗"
-                  >
-                    <X className="h-5 w-5" aria-hidden="true" />
-                  </button>
-                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                    <Check
-                      className="h-8 w-8 text-green-500"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <h3
-                    id="modal-title"
-                    className="mb-2 text-xl font-bold text-[#0F172A]"
-                  >
-                    推荐提交成功
-                  </h3>
-                  <p className="mb-6 leading-relaxed text-[#64748B]">
-                    你的推荐已成功提交，我们将在 24 小时内完成审核
-                  </p>
-                  <div className="flex flex-col gap-3 sm:flex-row">
-                    <button
-                      onClick={() => setShowSuccess(false)}
-                      className="min-h-[48px] flex-1 rounded-xl bg-[#FB7299] px-6 py-3 font-medium text-white transition-all hover:bg-[#E55A8A]"
-                    >
-                      关闭
-                    </button>
-                    <button
-                      onClick={() => {
-                        setShowSuccess(false);
-                        setBvNumber('');
-                        setCategory('');
-                        setReason('');
-                        setAgreed(false);
-                      }}
-                      className="min-h-[48px] flex-1 rounded-xl border border-gray-200 bg-white px-6 py-3 font-medium text-[#0F172A] transition-all hover:bg-gray-50"
-                    >
-                      再推荐一个
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
-
-      <style>{`
-        @keyframes modalIn {
-          to {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-      `}</style>
     </section>
   );
 }

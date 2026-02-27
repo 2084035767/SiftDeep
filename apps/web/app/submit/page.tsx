@@ -1,4 +1,5 @@
 import { SubmitForm, Navbar } from '@/components/siftdeep';
+import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,9 +16,17 @@ const Page = () => {
       </main>
       <footer className="mt-auto border-t border-gray-100 bg-gray-50 py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-gray-500">
-            © 2025 深选 SiftDeep - 让好内容被看见
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="text-center text-sm text-gray-500">
+              © 2025 深选 SiftDeep - 让好内容被看见
+            </p>
+            <Link
+              href="/submit/list"
+              className="text-sm font-medium text-blue-600 hover:text-blue-700"
+            >
+              我的投稿记录 →
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
