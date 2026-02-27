@@ -26,20 +26,22 @@ export function Navbar() {
   return (
     <header
       id="navbar"
-      className="fixed top-0 w-full border-b border-gray-100 bg-white"
-      style={{ zIndex: '9999', boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)' }}
+      className="fixed top-0 w-full border-b border-gray-100 bg-white/80 backdrop-blur-xl"
+      style={{ zIndex: '9999', boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.05)' }}
       role="banner"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3">
+        <div className="flex items-center justify-between py-2.5">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center text-xl font-bold text-gray-900"
+            className="group flex items-center gap-2 text-xl font-bold text-gray-900"
             aria-label="深选 - 返回首页"
           >
-            <Compass className="mr-2 h-5 w-5" aria-hidden="true" />
-            <span>深选</span>
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-gray-900 to-gray-700 text-white shadow-sm transition-transform group-hover:scale-105">
+              <Compass className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <span className="hidden sm:inline-block">深选</span>
           </Link>
 
           {/* 桌面端导航 */}
@@ -51,7 +53,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="nav-item text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
               >
                 {item.label}
               </Link>
@@ -85,7 +87,7 @@ export function Navbar() {
 
             {/* 移动端菜单按钮 */}
             <button
-              className="text-gray-600 focus:outline-none md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 focus:outline-none md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? '关闭菜单' : '打开菜单'}
               aria-expanded={mobileMenuOpen}
@@ -101,13 +103,17 @@ export function Navbar() {
 
         {/* 移动端导航菜单 */}
         {mobileMenuOpen && (
-          <div className="pb-4 md:hidden" role="menu" aria-label="移动导航">
-            <nav className="flex flex-wrap gap-2">
+          <div
+            className="slide-up-fade border-t border-gray-100 py-4 md:hidden"
+            role="menu"
+            aria-label="移动导航"
+          >
+            <nav className="flex flex-col space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="nav-item text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  className="rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                   role="menuitem"
                 >
