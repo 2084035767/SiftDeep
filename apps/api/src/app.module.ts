@@ -16,6 +16,15 @@ import { ThrottlerGuard } from '@nestjs/throttler';
 import { AuthModule } from './features/auth/auth.module';
 import { HealthModule } from './features/health/health.module';
 import { MailModule } from './features/mail/mail.module';
+import { BilibiliModule } from './features/bilibili/bilibili.module';
+import { VideosModule } from './features/videos/videos.module';
+import { SubmissionsModule } from './features/submissions/submissions.module';
+import { TasksModule } from './features/tasks/tasks.module';
+import { CollectionsModule } from './features/collections/collections.module';
+import { TopicsModule } from './features/topics/topics.module';
+import { FeedbackModule } from './features/feedback/feedback.module';
+import { ReviewsModule } from './features/reviews/reviews.module';
+import { RecommendationsModule } from './features/recommendations/recommendations.module';
 
 /**
  * The root module of the application.
@@ -54,6 +63,15 @@ import { MailModule } from './features/mail/mail.module';
     MailModule,
     HealthModule,
     FileModule,
+    BilibiliModule,
+    VideosModule,
+    SubmissionsModule,
+    TasksModule,
+    CollectionsModule,
+    TopicsModule,
+    FeedbackModule,
+    ReviewsModule,
+    RecommendationsModule,
   ],
 })
 export class AppModule {}
